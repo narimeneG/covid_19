@@ -1,0 +1,55 @@
+#container {
+    height: 500px; 
+    min-width: 410px; 
+    max-width: 800px; 
+    margin: 0 auto; 
+}
+.loading {
+    margin-top: 10em;
+    text-align: center;
+    color: gray;
+}
+
+.border-md-right {
+    border-right: 0.5px ridge rgb(65, 61, 61);
+  }
+  
+  @media (max-width: 768px) {
+  
+    .border-md-right {
+      border-right: none;
+    }
+  
+  }
+
+  .logo h3{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    font-size: 30px;
+    color: rgba(20, 16, 16, 0.1);
+    background-image: url('../img/animate/img1.png');
+    background-repeat: repeat-x;
+    -webkit-background-clip: text;
+    animation: animate 15s linear infinite
+  }
+  @keyframes animate{
+    0%
+    {
+      background-position: left 0px top 200px;
+    }
+    40%
+    {
+      background-position: left 1000px top -150px;
+    }
+    80%
+    {
+      background-position: left 2000px top -80px;
+    }
+    100%
+    {
+      background-position: left 200px top 100px;
+    }
+    
+  }
