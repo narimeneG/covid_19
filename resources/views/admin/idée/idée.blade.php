@@ -70,6 +70,7 @@ AdminKit Demo - idées Template
 								<td ><span class="etat">{{ $c->etat }}</span></td>
 								<td class="table-action">
 									<button type="submit" class="btn btn-outline-success btn1 " data-iid="{{ $c->id }}_e" data-etat="{{ $c->etat }}"><i class="fas fa-check"></i></button>
+									<button class="btn btn-outline-danger m-0" data-iid="{{ $c->id }}_e" data-etat="{{ $c->etat }}"><i class="fas fa-times"></i></button>
 									<button class="btn btn-info m-0" ><a href="{{url('admin/idée/'.$c->id.'/show')}}"><i class="align-middle text-white" data-feather="eye"></i></a></button>
 									<button class="btn btn-warning m-0" data-iid="{{ $c->id }}" data-titre="{{ $c->titre }}" data-cont="{{ $c->contenu }}" data-cid="{{ $c->cat_id }}" data-nom="{{ $c->cat->nom }}" data-toggle="modal" data-target="#modal2"><i class="align-middle" data-feather="edit-2"></i></button>
 									<button class="btn btn-danger m-0" data-iid="{{ $c->id }}" data-toggle="modal" data-target="#modal3"><i class="align-middle" data-feather="trash-2"></i></button>
@@ -215,6 +216,27 @@ AdminKit Demo - idées Template
 				
 			}
 		});
+		
+	});
+	$('.btn-outline-danger').on('click', function () {
+		var idee_id = $(this).attr('data-iid');
+		idee_id = idee_id.slice(0, -2);
+		var etat = $(this).attr('data-etat');
+		alert(idee_id+","+etat);
+		$.ajax({
+			type: 'POST',
+			url: "{{ route('refus') }}",
+			data: {idee_id: idee_id,etat: etat, _token: token},
+
+			success: function(data){
+				//alert("ok");
+				if(data.e == 1){
+					location.reload();
+				}
+				
+			}
+		});
+		
 		
 	});
 </script>

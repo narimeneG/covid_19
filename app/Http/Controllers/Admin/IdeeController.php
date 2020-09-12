@@ -41,13 +41,40 @@ class IdeeController extends Controller
             ->where('id',$idee_id)
             ->first();
 
-        if($eta->etat == 0){
+        if($eta->etat == 'nouvelle'){
             DB::table('idées')
                 ->where('id',$idee_id)
-                ->update(['etat' => 1]);
+                ->update(['etat' => 'accepté']);
             $e = 1;
         }
-        
+        if($eta->etat == 'réfusé'){
+            DB::table('idées')
+                ->where('id',$idee_id)
+                ->update(['etat' => 'accepté']);
+            $e = 1;
+        }
+
+        $response = array(
+            'e' => $e,
+        );
+        return response()->json($response, 200);
+    }
+
+    public function refus(Request $request)
+    {
+        $idee_id = $request->idee_id;
+        $etat = $request->etat;
+
+        $eta = DB::table('idées')
+            ->where('id',$idee_id)
+            ->first();
+
+        if($eta->etat == 'nouvelle'){
+            DB::table('idées')
+                ->where('id',$idee_id)
+                ->update(['etat' => 'réfusé']);
+            $e = 1;
+        }
 
         $response = array(
             'e' => $e,

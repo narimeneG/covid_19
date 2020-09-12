@@ -18,7 +18,7 @@ class CreateIdéesTable extends Migration
             $table->string('titre');
             $table->string('contenu',500);
             $table->string('image')->nullable();
-            $table->integer('etat')->default(0);
+            $table->string('etat')->default('nouvelle');
             $table->date('date');
             $table->unsignedInteger('cat_id');
             $table->foreign('cat_id')->references('id')->on('categories')->onDelete('cascade');

@@ -28,6 +28,7 @@ Route::delete('admin/categories','Admin\CategorieController@destroy')->name('adm
 Route::get('admin/idées','Admin\IdeeController@index');
 Route::get('idée','Citoyen\IdeeController@create'); //user frontend
 Route::post('accepte','Admin\IdeeController@accepte')->name('accepte');
+Route::post('refus','Admin\IdeeController@refus')->name('refus');
 Route::post('idée','Citoyen\IdeeController@store')->name('idée');//user frontend
 Route::post('like','Citoyen\IdeeController@like')->name('like');//user frontend
 Route::post('dislike','Citoyen\IdeeController@dislike')->name('dislike');//user frontend
