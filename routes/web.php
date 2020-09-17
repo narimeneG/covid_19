@@ -73,7 +73,11 @@ Route::post('signal','Citoyen\SignalController@store')->name('signal');
 Route::get('admin/signal/{id}/show','Admin\SignalController@show');
 
 //Les pub
+Route::get('admin/info','Admin\InformationController@index');
+Route::get('admin/pub/{id}/show','Admin\InformationController@show');
 Route::get('publication','Citoyen\InformationController@index');
+Route::post('admin/info','Admin\InformationController@store')->name('admin/info');
+Route::put('admin/info','Admin\InformationController@update')->name('admin/info');
 
 //Les admins
 Route::get('admin/Admins','Admin\AdminController@index');
@@ -89,9 +93,6 @@ Route::delete('admin/Admins','Admin\AdminController@destroy')->name('admin/Admin
 Route::get('admin/statistique','Admin\ChartController@index');
 //Route::get('admin/statistique','ChartController@chart');
 Route::get('test','ChartController@getAllMonths');
-
-Route::get('admin/info','Admin\InformationController@index');
-Route::get('admin/pub/{id}/show','Admin\InformationController@show');
 
 //Citoyen profile
 Route::get('user/{id}/profile','Citoyen\UserController@profile');

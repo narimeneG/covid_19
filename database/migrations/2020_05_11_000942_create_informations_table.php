@@ -19,7 +19,7 @@ class CreateInformationsTable extends Migration
             $table->string('contenu',500)->nullable();
             $table->string('lien')->nullable();
             $table->string('image')->nullable();
-            $table->date('date');
+            $table->date('date')->nullable();
             $table->unsignedInteger('mal_id')->nullable();
             $table->foreign('mal_id')->references('id')->on('maladies')->onDelete('cascade');
             $table->unsignedInteger('pro_id')->nullable();
