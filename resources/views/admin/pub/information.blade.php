@@ -26,7 +26,7 @@
 		</div>
 		<div class="row card-footer clearfix">
 			<div class="col-10"><strong>Les informations</strong></div>
-			<button type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#modal2" ><i class="fas fa-plus"></i> Add item</button>
+			<button type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#modal1" ><i class="fas fa-plus"></i> Add item</button>
 		</div>
 		<br>
 		<div class="row">
@@ -88,11 +88,11 @@
 				</div>
 			  </div>
 	<!-- Modal add et modification-->
-	<div id="modal2" class="modal fade" role="dialog">
+	<div id="modal1" class="modal fade" role="dialog">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header alert-primary">
-					<h5 class="modal-title" ></h5>
+					<h5 class="modal-title">Nouvelle publication</h5>
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
 				<form action="" method="POST" data-toggle="validator" id="add">
@@ -103,20 +103,43 @@
 								<input type="text" class="form-control " name="titre" id="titre" placeholder="titre de l'information">
 							</div>
 							<div class='col-md-6'>
-								<label >Source</label>			
-								<input type="text" class="form-control" id="source" name="source" placeholder="la source">			
+								<label>Profession</label>
+								<select class="form-control" name="pro_id" id="p_id">
+								@foreach($professions as $pro)
+                                    <option value='{{ $pro->id }}'>{{ $pro->nom }}</option>
+                                @endforeach
+								</select>
 							</div>			
 						</div>       
-						<div class="form-row">
-							<label>Déstination</label>
-							<div class="input-group">
-								<input type="text" class="form-control" placeholder="TagName" id="searchname" name="searchname">
-							</div>
-						</div>
+						<div class="form-group ">
+                            <label>Maladies</label>
+                            <select class="form-control select2-multi" name="tags[]" multiple="multiple">
+                                @foreach($maladies as $mal)
+                                    <option value='{{ $mal->id }}'>{{ $mal->nom }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+						<div class="form-group ">
+                            <label>Wilayas</label>
+                            <select class="form-control select1-multi" name="tags1[]" multiple="multiple">   
+							@foreach($wilayas as $wil)
+                                    <option value='{{ $wil->id }}'>{{ $wil->nom }}</option>
+                                @endforeach
+                            
+                            </select>
+                        </div>
 						<div class="form-row">
 							<label >Contenu</label>
 							<textarea name="contenu" placeholder="Description " class="form-contro col-sm-12 rounded" rows="3" required></textarea>
 						</div>
+						<div class="form-group ">
+							<label>Source</label>
+							<select class="form-control" name="sou_id" id="s_id">
+							@foreach($sources as $source)
+                                    <option value='{{ $source->id }}'>{{ $source->nom }}</option>
+                                @endforeach
+							</select>
+                        </div>
 						<div class="form-row">
 							<label >Lien vidéo</label>
 							<input type="text" class="form-control" id="lien" placeholder="le lien">
@@ -131,14 +154,94 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
-						<button type="button" class="btn btn-primary">r</button>
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+						<button type="submit" class="btn btn-primary">Enregiter</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- Modal add et modification-->
+	<div id="modal2" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header alert-primary">
+					<h5 class="modal-title">Modifier la publication</h5>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<form action="" method="POST" data-toggle="validator" id="add">
+					<div class="modal-body">
+						<div class="form-row">
+							<div class='col-md-6'>
+								<label>titre</label>
+								<input type="text" class="form-control " name="titre" id="titre" placeholder="titre de l'information">
+							</div>
+							<div class='col-md-6'>
+								<label>Profession</label>
+								<select class="form-control" name="pro_id" id="p_id">
+								@foreach($professions as $pro)
+                                    <option value='{{ $pro->id }}'>{{ $pro->nom }}</option>
+                                @endforeach
+								</select>
+							</div>			
+						</div>       
+						<div class="form-group ">
+                            <label>Maladies</label>
+							<select class="form-control select2-multi" name="tags[]" multiple="multiple">
+                                @foreach($maladies as $mal)
+                                    <option value='{{ $mal->id }}'>{{ $mal->nom }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+						<div class="form-group ">
+                            <label>Wilayas</label>
+                            <select class="form-control select1-multi" name="tags1[]" multiple="multiple">   
+							@foreach($wilayas as $wil)
+                                    <option value='{{ $wil->id }}'>{{ $wil->nom }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+						<div class="form-row">
+							<label >Contenu</label>
+							<textarea name="contenu" placeholder="Description " class="form-contro col-sm-12 rounded" rows="3" required></textarea>
+						</div>
+						<div class="form-group ">
+							<label>Source</label>
+							
+							<select class="form-control" name="sou_id" id="s_id">
+							@foreach($sources as $source)
+                                    <option value='{{ $source->id }}'>{{ $source->nom }}</option>
+                                @endforeach
+							</select>
+                        </div>
+						<div class="form-row">
+							<label >Lien vidéo</label>
+							<input type="text" class="form-control" id="lien" placeholder="le lien">
+						</div>
+						<div class="form-row">
+							<div class="">
+								<div class="card-body">
+									<label for="input-file-now">Photo</label>
+									<input type="file" id="input-file-now" class="dropify" />
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+						<button type="submit" class="btn btn-primary">Modifer</button>
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
 	
+	<script src="{{ asset('../dist/js/parsley.min.js') }}"></script>
+    <script src="{{ asset('../dist/js/select2.min.js') }}"></script>
+    <script type="text/javascript">
+		$('.select2-multi').select2();
+	</script>
+
 <script src="{{asset('js/app.js')}}"></script>
 <script>
   $(function () {
