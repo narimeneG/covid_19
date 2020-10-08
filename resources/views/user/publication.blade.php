@@ -49,8 +49,8 @@ publication
                                         <a class="d-inline-block" href="single-blog.html">
                                             <h2>{{ $info->titre }}</h2>
                                         </a>
-                                        <p>{{ $info->contenu }}<br>
-                                        @if($info->sou_id != null) {{$info->nom}} @else <p></p> @endif
+                                        <p>{{ $info->contenu }}<br><br>
+                                        @if($info->sou_id != null) {{$info->source->nom}} @else <p></p> @endif
                                         </p>
                                         <ul class="blog-info-link">
                                             <li><a href="#"><i class="fa fa-heart-o"></i> Favoris</a></li>

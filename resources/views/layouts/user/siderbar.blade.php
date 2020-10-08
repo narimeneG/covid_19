@@ -1,36 +1,18 @@
 
 <div class="col-lg-4">
     <div class="blog_right_sidebar">
-        <aside class="single_sidebar_widget search_widget">
-            <form action="#">
-                <div class="form-group">
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder='Search Keyword'
-                            onfocus="this.placeholder = ''"
-                            onblur="this.placeholder = 'Search Keyword'">
-                        <div class="input-group-append">
-                            <button class="btns" type="button"><i class="ti-search"></i></button>
-                        </div>
-                    </div>
-                </div>
-                <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
-                    type="submit">Recherche</button>
-            </form>
-        </aside>
+        
         <!-- Ajouter idées-->
         <aside class="single_sidebar_widget search_widget">
             <button type="button" class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn" data-toggle="modal" data-target="#modal1">Ajouter une idée</button>
         </aside>
-        
         <!-- Catégories -->
         <aside class="single_sidebar_widget post_category_widget">
             <h4 class="widget_title">Catégorie</h4>
             <ul class="list cat-list">
                 @foreach($cats as $c)
                     <li>
-                        <a href="#" class="d-flex">
-                            <p>{{ $c->nom }}</p>
-                        </a>
+                        <a href="{{ url('idéesCatégorie/'.$c->id.'/show') }}" class="d-flex">{{ $c->nom }}</a>
                     </li>
                 @endforeach
             </ul>
@@ -84,36 +66,36 @@
             </ul>
         </aside>
         <aside class="single_sidebar_widget instagram_feeds">
-            <h4 class="widget_title">Instagram Feeds</h4>
+            <h4 class="widget_title">Photos</h4>
             <ul class="instagram_row flex-wrap">
                 <li>
                     <a href="#">
-                        <img class="img-fluid" src="../user/img/post/post_5.png" alt="">
+                        <img class="img-fluid" src="{{asset('../uploads/info/coronavirus-protection-mask-vector.jpg')}}" alt="">
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        <img class="img-fluid" src="../user/img/post/post_6.png" alt="">
+                        <img class="img-fluid" src="{{asset('../user/img/gettyimages-1212213054-2048x2048.jpg')}}" alt="">
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        <img class="img-fluid" src="../user/img/post/post_7.png" alt="">
+                        <img class="img-fluid" src="{{asset('../uploads/admin/1.jpg')}}" alt="">
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        <img class="img-fluid" src="../user/img/post/post_8.png" alt="">
+                        <img class="img-fluid" src="{{asset('../uploads/users/4.jpg')}}" alt="">
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        <img class="img-fluid" src="../user/img/post/post_9.png" alt="">
+                        <img class="img-fluid" src="{{asset('../user/img/3.jpg')}}" alt="">
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        <img class="img-fluid" src="../user/img/post/post_10.png" alt="">
+                        <img class="img-fluid" src="{{asset('../user/img/4.jpg')}}" alt="">
                     </a>
                 </li>
             </ul>

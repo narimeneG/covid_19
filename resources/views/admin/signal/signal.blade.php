@@ -230,22 +230,22 @@ AdminKit Demo - signals Template
 		
 	});
 </script>
-	<script>
-		$(function () {
-			$('#example1').DataTable({
-			"paging": true,
-			"lengthChange": true,
-			"searching": true,
-			"ordering": true,
-			"info": true,
-			"autoWidth": false,
-			"responsive": true,
-			});
-			$('#example2').DataTable({
-			"autoWidth": false,
-			"responsive": true,
-			});
+<script>
+	$(function () {
+		$('#example1').DataTable({
+		"paging": true,
+		"lengthChange": true,
+		"searching": true,
+		"ordering": true,
+		"info": true,
+		"autoWidth": false,
+		"responsive": true,
 		});
-	</script>	
+		$('#example2').DataTable({
+		"autoWidth": false,
+		"responsive": true,
+		});
+	});
+</script>	
 @endsection
 

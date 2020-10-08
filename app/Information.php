@@ -8,9 +8,9 @@ class Information extends Model
 {
     protected $table = 'informations';
 
-    public function wilaya()
+    public function wilayas()
     {
-        return $this->belongsTo('App\Wilaya','wilaya_id');
+        return $this->belongsToMany('App\Wilaya','info_wilayas', 'info_id', 'wilaya_id');
     }
 
     public function source()
@@ -23,8 +23,8 @@ class Information extends Model
         return $this->belongsTo('App\Profession','pro_id');
     }
 
-    public function maladie()
+    public function maladies()
     {
-        return $this->belongsTo('App\Maladie','mal_id');
+        return $this->belongsToMany('App\Maladie', 'info_maladies', 'info_id', 'mal_id');
     }
 }

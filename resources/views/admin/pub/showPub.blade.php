@@ -50,16 +50,16 @@
                                         <div class="col-md-6 col-xs-6 b-r"><span class= "badge badge-info"><strong class= "badge badge-info">titre</strong></span>
                                             <br>
                                             <p class="text-muted"> {{ $info->titre }} </p>
-																				</div>
-																				<div class="col-md-6 col-xs-6 b-r"><span class= "badge badge-info"><strong>maladie </strong></span>
+                                        </div>
+                                        <div class="col-md-6 col-xs-6 b-r"><span class= "badge badge-info"><strong>maladie </strong></span>
                                             <br>
                                             @if($info->mal_id != null)<p class="text-muted">{{ $info->maladie->nom }}</p>@else<p class="text-muted">tous les maladis</p>@endif
-																				</div>
-																				<div class="col-md-6 col-xs-6 b-r"><span class= "badge badge-info"><strong>wilayas </strong></span>
+                                        </div>
+                                        <div class="col-md-6 col-xs-6 b-r"><span class= "badge badge-info"><strong>wilayas </strong></span>
                                             <br>
                                             @if($info->wilaya_id != null)<p class="text-muted">{{ $info->wilaya->nom }}</p>@else<p class="text-muted">tous les maladis</p>@endif
-																				</div>
-																				<div class="col-md-6 col-xs-6 b-r"><span class= "badge badge-info"><strong>profession </strong></span>
+                                        </div>
+                                        <div class="col-md-6 col-xs-6 b-r"><span class= "badge badge-info"><strong>profession </strong></span>
                                             <br>
                                             @if($info->pro_id != null)<p class="text-muted">{{ $info->pro->nom }}</p>@else<p class="text-muted">tous les wilayas</p>@endif
                                         </div>

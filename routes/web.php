@@ -35,7 +35,7 @@ Route::post('dislike','Citoyen\IdeeController@dislike')->name('dislike');//user 
 Route::put('admin/idées','Admin\IdeeController@update')->name('admin/idées');
 Route::delete('admin/idées','Admin\IdeeController@destroy')->name('admin/idées');
 Route::get('admin/idée/{id}/show','Admin\IdeeController@show');
-
+Route::get('idéesCatégorie/{id}/show','Citoyen\IdeeController@show');//user frontend
 Route::get('admin/cateID/{id}/show','Admin\IdeeController@cateID');
  
 //Les routes de les Wilayas

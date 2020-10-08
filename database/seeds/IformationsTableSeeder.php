@@ -58,7 +58,6 @@ class IformationsTableSeeder extends Seeder
         $info->contenu = 'Trop de rassemblement les gens ne sont pas conscient ils prennent ce virus a la légère.';
         $info->image = 'uploads/info/p5.jpg';
         $info->date = date('Y-m-d', strtotime('2020-07-20'));
-        $info->wilaya_id = '10';
         $info->save();
 
         $info = new Information();
@@ -81,7 +80,6 @@ class IformationsTableSeeder extends Seeder
         $info->contenu = 'Un confinement total pour une durée de 10 renouvelable avec interdiction de et vers wilaya car c la plus touchée par la pandémie de corona virus covid-19.';
         $info->date = date('Y-m-d', strtotime('2020-04-20'));
         $info->sou_id = '1';
-        $info->wilaya_id = '1';
         $info->save();
 
         $info = new Information();

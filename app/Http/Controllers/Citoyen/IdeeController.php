@@ -16,11 +16,6 @@ use Image;
 
 class IdeeController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-    
     /**
      * Display a listing of the resource.
      *
@@ -38,18 +33,18 @@ class IdeeController extends Controller
      */
     public function create()
     {
-        $idees = Idee::Where('etat',1)->orderBy('date', 'desc')->paginate(5);
+        $idees = Idee::Where('etat',"accepté")->orderBy('date', 'desc')->paginate(5);
         $categories = Categorie::all();
         return view ('user.idée',['idees'=> $idees,'categories' => $categories]);
     }
 
-    public function c($id)
+    public function show($id)
     {
-        $idees = Idee::find($id);
-        $idees->etat = 1;
-        $idees->save();
-        return back();
+        $idees = Idee::where([['cat_id',$id],['etat',"accepté"]])->orderBy('date', 'desc')->paginate(5);
+        
+        return view('user.idéesCatégorie',['idees' => $idees]);
     }
+    
     /**
      * Store a newly created resource in storage.
      *

@@ -72,7 +72,7 @@ class InformationController extends Controller
      $information->pro_id=$request->input('pro_id');
      $information->date=$request->input('date');
 
-    $info->save();
+    $information->save();
     return redirect('admin/info');
 }
 }

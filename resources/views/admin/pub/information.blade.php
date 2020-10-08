@@ -37,9 +37,9 @@
 							<tr style="text-align:center;">
 								<th style="width:5%;">id</th>
 								<th style="width:15%;">Titre</th>
-								<th style="width:5%;">Maladies</th>
+								<th style="width:10%;">Maladies</th>
 								<th style="width:5%;">Profession</th>
-								<th style="width:5%;">Wilaya</th>
+								<th style="width:10%;">Wilaya</th>
 								<th style="width:15%;">Source</th>
 								<th style="width:15%">Actions</th>
 							</tr>
@@ -49,9 +49,17 @@
 							<tr style="text-align:center;">
 								<td>{{ $info->id }}</td>
 								<td>{{ $info->titre }}</td>
-								@if($info->mal_id != null) <td>{{$info->maladie->nom}}</td> @else <td>Tous les maladies</td> @endif
+								<td>
+									@foreach($info-> maladies as $m)
+										{{ $m->nom }}&nbsp;
+									@endforeach
+								</td>
 								@if($info->pro_id != null) <td>{{$info->pro->nom}}</td> @else <td>NULL</td> @endif
-								@if($info->wilaya_id != null) <td>{{$info->wilaya->nom}}</td> @else <td>NULL</td> @endif
+								<td>
+									@foreach($info-> wilayas as $w)
+										{{ $w->nom }}&nbsp;
+									@endforeach
+								</td>
 								@if($info->sou_id != null) <td>{{$info->source->nom}}</td> @else <td></td> @endif
 								<td class="table-action">
 									<button class="btn btn-info m-0" title="visualiser"><a href="{{url('admin/pub/'.$info->id.'/show')}}"><i class="align-middle text-white" data-feather="eye"></i></a></button>
@@ -70,23 +78,23 @@
 	
 	<!-- Modal supprission -->
 	<div id="modal3" class="modal fade" role="dialog">
-				<div class="modal-dialog">
-				  <!-- Modal content-->
-				  <div class="modal-content">
-					<!--div class="modal-header">
-							<h4 class="modal-title">Modal Header</h4>
-					  <button type="button" class="close" data-dismiss="modal">&times;</button>
-					</div-->
-					<div class="modal-body">
-						supprimer.......
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">non</button>
-						<button type="button" class="btn btn-danger">oui</button>
-					</div>
-				  </div>
-				</div>
-			  </div>
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+			<!--div class="modal-header">
+					<h4 class="modal-title">Modal Header</h4>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div-->
+			<div class="modal-body">
+				supprimer.......
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">non</button>
+				<button type="button" class="btn btn-danger">oui</button>
+			</div>
+			</div>
+		</div>
+	</div>
 	<!-- Modal add -->
 	<div id="modal1" class="modal fade" role="dialog">
 		<div class="modal-dialog">
@@ -272,29 +280,29 @@
 </script>
 <script>
 
-$('#modal2').on('show.bs.modal', function (event) {
+	$('#modal2').on('show.bs.modal', function (event) {
 
-	var button = $(event.relatedTarget) 
-	var title = button.data('titre') 
-	var contenu = button.data('cont') 
-	var info_id = button.data('infoid') 
-	var s_id = button.data('sid') 
-	var w_id = button.data('wid') 
-	var m_id = button.data('mid') 
-	var p_id = button.data('pid') 
-	var lien = button.data('lien') 
-	alert(info_id);
+		var button = $(event.relatedTarget) 
+		var title = button.data('titre') 
+		var contenu = button.data('cont') 
+		var info_id = button.data('infoid') 
+		var s_id = button.data('sid') 
+		var w_id = button.data('wid') 
+		var m_id = button.data('mid') 
+		var p_id = button.data('pid') 
+		var lien = button.data('lien') 
+		alert(info_id);
 
-	var modal = $(this)
-	modal.find('.modal-body #titre').val(title);
-	modal.find('.modal-body #info_id').val(info_id);
-	modal.find('.modal-body #contenu').val(contenu);
-	modal.find('.modal-body #lien').val(lien);
-	modal.find('.modal-body #s_id').val(s_id);
-	modal.find('.modal-body #w_id').val(w_id);
-	modal.find('.modal-body #m_id').val(m_id);
-	modal.find('.modal-body #p_id').val(p_id);
-});
+		var modal = $(this)
+		modal.find('.modal-body #titre').val(title);
+		modal.find('.modal-body #info_id').val(info_id);
+		modal.find('.modal-body #contenu').val(contenu);
+		modal.find('.modal-body #lien').val(lien);
+		modal.find('.modal-body #s_id').val(s_id);
+		modal.find('.modal-body #w_id').val(w_id);
+		modal.find('.modal-body #m_id').val(m_id);
+		modal.find('.modal-body #p_id').val(p_id);
+	});
 <script>
 @endsection
 	
