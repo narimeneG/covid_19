@@ -49,9 +49,8 @@ publication
                                         <a class="d-inline-block" href="single-blog.html">
                                             <h2>{{ $info->titre }}</h2>
                                         </a>
-                                        <p>{{ $info->contenu }}<br><br>
-                                        @if($info->sou_id != null) {{$info->source->nom}} @else <p></p> @endif
-                                        </p>
+                                        <p>{{ $info->contenu }}</p>
+                                        @if($info->sou_id != null) <p>{{$info->sou_id}}</p> @else <p></p> @endif
                                         <ul class="blog-info-link">
                                             <li><a href="#"><i class="fa fa-heart-o"></i> Favoris</a></li>
                                             <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
@@ -66,7 +65,9 @@ publication
                                         <p>
                                         </p>
                                         <ul class="blog-info-link">
-                                            <li><a href="#"><i class="fa fa-heart-o"></i> Favoris</a></li>
+                                            <li>
+                                                <a href="#" data-infoid="{{ $info->id }}_l" class="favoris"><i class="fa fa-heart-o"></i> Favoris</a>
+                                            </li>
                                             <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
                                             <li><a href="#"><i class="fa fa-share-alt"></i> Partager</a></li>
                                         </ul>
@@ -80,6 +81,18 @@ publication
                         </nav>
                     </div>
                 </div>
-                
-            
-    @endsection
+
+<!-- JS here -->
+<script src="{{asset('js/app.js')}}"></script>     
+<script>
+    $('.favoris').on('click', function () {
+        alert("tggggggggggggg");
+        var info_id = $(this).attr('data-infoid');
+        info_id = info_id.slice(0, -2);
+        alert(info_id);
+
+        
+        
+    });
+</script>          
+@endsection

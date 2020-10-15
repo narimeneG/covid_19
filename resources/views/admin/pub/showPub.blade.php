@@ -51,17 +51,29 @@
                                             <br>
                                             <p class="text-muted"> {{ $info->titre }} </p>
                                         </div>
+                                        <div class="col-md-6 col-xs-6 b-r"><span class= "badge badge-info"><strong class= "badge badge-info">Date</strong></span>
+                                            <br>
+                                            <p class="text-muted"> {{ $info->date }} </p>
+                                        </div>
                                         <div class="col-md-6 col-xs-6 b-r"><span class= "badge badge-info"><strong>maladie </strong></span>
                                             <br>
-                                            @if($info->mal_id != null)<p class="text-muted">{{ $info->maladie->nom }}</p>@else<p class="text-muted">tous les maladis</p>@endif
+                                            <p class="text-muted">
+                                                @foreach($info-> maladies as $m)
+                                                    {{ $m->nom }}&nbsp;
+                                                @endforeach
+                                            </p>
                                         </div>
                                         <div class="col-md-6 col-xs-6 b-r"><span class= "badge badge-info"><strong>wilayas </strong></span>
                                             <br>
-                                            @if($info->wilaya_id != null)<p class="text-muted">{{ $info->wilaya->nom }}</p>@else<p class="text-muted">tous les maladis</p>@endif
+                                            <p class="text-muted">
+                                                @foreach($info-> wilayas as $w)
+                                                    {{ $w->nom }}&nbsp;
+                                                @endforeach
+                                            </p>
                                         </div>
                                         <div class="col-md-6 col-xs-6 b-r"><span class= "badge badge-info"><strong>profession </strong></span>
                                             <br>
-                                            @if($info->pro_id != null)<p class="text-muted">{{ $info->pro->nom }}</p>@else<p class="text-muted">tous les wilayas</p>@endif
+                                            @if($info->pro_id != null)<p class="text-muted">{{ $info->pro->nom }}</p>@else<p class="text-muted">tous les pros</p>@endif
                                         </div>
                                         <div class="col-md-6 col-xs-6 b-r"><span class= "badge badge-info"><strong>source </strong></span>
                                             <br>
@@ -71,7 +83,7 @@
                                     <hr>
                                     <div class="row"> 
                                         <div class="col-md-12 col-xs-6"> <br>
-                                            <h4 class="card-title"><span >contenu </span></h4>
+                                            <h4 class="card-title"><span class= "badge badge-info">contenu </span></h4>
                                             <p class="text-muted"> {{ $info->contenu }} </p>
                                         </div>
                                     </div>

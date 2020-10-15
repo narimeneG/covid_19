@@ -64,17 +64,13 @@
                                             <br>
                                             <p class="text-muted"> {{ $signal->date }}</p>
                                         </div>
-                                        <div class="col-md-3 col-xs-6 b-r"><span class= "badge badge-info"><strong>Accepté</strong></span>
+                                        <div class="col-md-3 col-xs-6 b-r"><span class= "badge badge-info"><strong>Etat</strong></span>
                                             <br>
-                                            <p class="text-muted"> {{ $signal->accepté }}</p>
-                                        </div>
-                                        <div class="col-md-3 col-xs-6 b-r"><span class= "badge badge-info"><strong>Réfusé</strong></span>
-                                            <br>
-                                            <p class="text-muted"> {{ $signal->refusé }}</p>
+                                            <p class="text-muted"> {{ $signal->etat }}</p>
                                         </div>											
                                     </div>										
                                     <hr>
-                                    <h4 class="card-title"><span class= "badge badge-info">Déscription </h4></span>
+                                    <h4 class="card-title"><span class= "badge badge-info">Déscription </span></h4>
                                     <p class="m-t-30">{{ $signal->contenu }}.</p>
                                 </div>
                             </div>

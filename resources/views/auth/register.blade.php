@@ -29,7 +29,7 @@
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
+    <![endif]-->
 </head>
         @php
             $profs = DB::table('professions')->get();
@@ -108,26 +108,26 @@
                                 </span>
                             @endif
                     </div>
-                        <div class="form-group">
-                            <select class="form-control {{$errors->has('pro_id') ? 'is-invalid' : ''}}" name="pro_id">
-                                @foreach ($profs as $prof)
-                                    <option value="{{$prof->id}}">{{$prof->nom}} </option>
-                                 @endforeach
-                            </select>
-                            @if ($errors->has('pro_id'))
-                                <span class="help-block text-danger">
-                                    <strong>{{ $errors->first('pro_id') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-                        <div class="form-group ">
-                            <label>Maladies</label>
-                            <select class="form-control select2-multi" name="tags[]" multiple="multiple">
-                                @foreach($maladies as $mal)
-                                    <option value='{{ $mal->id }}'>{{ $mal->nom }}</option>
+                    <div class="form-group">
+                        <select class="form-control {{$errors->has('pro_id') ? 'is-invalid' : ''}}" name="pro_id">
+                            @foreach ($profs as $prof)
+                                <option value="{{$prof->id}}">{{$prof->nom}} </option>
                                 @endforeach
-                            </select>
-                        </div>
+                        </select>
+                        @if ($errors->has('pro_id'))
+                            <span class="help-block text-danger">
+                                <strong>{{ $errors->first('pro_id') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                    <div class="form-group ">
+                        <label>Maladies</label>
+                        <select class="form-control select2-multi" name="tags[]" multiple="multiple">
+                            @foreach($maladies as $mal)
+                                <option value='{{ $mal->id }}'>{{ $mal->nom }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     <div class="form-group text-center m-t-15">
                         <div class="col-xs-12">
                             <button class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light" type="submit">Enregister</button>

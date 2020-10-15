@@ -78,6 +78,7 @@ Route::get('admin/pub/{id}/show','Admin\InformationController@show');
 Route::get('publication','Citoyen\InformationController@index');
 Route::post('admin/info','Admin\InformationController@store')->name('admin/info');
 Route::put('admin/info','Admin\InformationController@update')->name('admin/info');
+Route::delete('admin/info','Admin\InformationController@destroy')->name('admin/info');
 
 //Les admins
 Route::get('admin/Admins','Admin\AdminController@index');

@@ -47,19 +47,27 @@ AdminKit Demo - showIdée Template
                             <div class="tab-pane active" id="profile" role="tabpanel">
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-md-6 col-xs-6 b-r"><span class= "badge badge-info"><strong class= "badge badge-info">titre</strong></span>
+                                        <div class="col-md-6 col-xs-6 b-r"><span class= "badge badge-info"><strong class= "badge badge-info">Titre</strong></span>
                                             <br>
                                             <p class="text-muted"> {{ $idee->titre }} </p>
                                         </div>
-                                        <div class="col-md-6 col-xs-6 b-r">  <span class= "badge badge-info"><strong>categorie </strong></span>
+                                        <div class="col-md-6 col-xs-6 b-r"><span class= "badge badge-info"><strong class= "badge badge-info">Date</strong></span>
+                                            <br>
+                                            <p class="text-muted"> {{ $idee->date }} </p>
+                                        </div>
+                                        <div class="col-md-6 col-xs-6 b-r">  <span class= "badge badge-info"><strong>Catégorie </strong></span>
                                             <br>
                                             <p class="text-muted">{{ $idee->cat->nom }} </p>
+                                        </div>
+                                        <div class="col-md-6 col-xs-6 b-r">  <span class= "badge badge-info"><strong>Etat </strong></span>
+                                            <br>
+                                            <p class="text-muted">{{ $idee->etat }} </p>
                                         </div>
                                     </div>
                                     <hr>
                                     <div class="row"> 
                                         <div class="col-md-12 col-xs-6"> <br>
-                                            <h4 class="card-title"><span >contenu </span></h4>
+                                            <h4 class="card-title"><span class= "badge badge-info">Contenu </span></h4>
                                             <p class="text-muted"> {{ $idee->contenu }} </p>
                                         </div>
                                     </div>

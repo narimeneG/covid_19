@@ -107,29 +107,28 @@ AdminKit Demo - idées Template
                                     </span>
                                 @endif						
 						</div>
-								<div class='col-md-6'><label>Catégorie</label>
-									<select class="form-control {{$errors->has('cat_id') ? 'is-invalid' : ''}}" name="cat_id" id="c_id">
-									@foreach ($categories as $cat)
-										<option value="{{$cat->id}}">{{$cat->nom}}</option>
-										@endforeach
-										@if($errors->has('cat_id'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('cat_id')}}</strong>
-                                    </span>
-                                @endif
-										</select>
-								</div>
-							</div>
-							<div class="form-row">
-								<label >Contenu</label>
-								<textarea placeholder="saisir contenu de l'idée" name="contenu" id="contenu" class="form-control col-sm-12 rounded {{$errors->has('contenu') ? 'is-invalid' : ''}}" ></textarea>
-								@if($errors->has('contenu'))
-                                    <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('contenu')}}</strong>
-                                            </span>
-                                    @endif
-							</div>
-					
+						<div class='col-md-6'><label>Catégorie</label>
+							<select class="form-control {{$errors->has('cat_id') ? 'is-invalid' : ''}}" name="cat_id" id="c_id">
+								@foreach ($categories as $cat)
+									<option value="{{$cat->id}}">{{$cat->nom}}</option>
+								@endforeach
+								@if($errors->has('cat_id'))
+									<span class="invalid-feedback" role="alert">
+										<strong>{{ $errors->first('cat_id')}}</strong>
+									</span>
+								@endif
+							</select>
+						</div>
+					</div>
+					<div class="form-row">
+						<label >Contenu</label>
+						<textarea placeholder="saisir contenu de l'idée" name="contenu" id="contenu" class="form-control col-sm-12 rounded {{$errors->has('contenu') ? 'is-invalid' : ''}}" ></textarea>
+						@if($errors->has('contenu'))
+							<span class="invalid-feedback" role="alert">
+								<strong>{{ $errors->first('contenu')}}</strong>
+							</span>
+						@endif
+					</div>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>

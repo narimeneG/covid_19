@@ -14,18 +14,11 @@
                         <div class="main-menu">
                             <nav class="d-none d-lg-block">
                                 <ul id="navigation">
-                                    <li><a href="{{url('/')}}">Home</a></li>
+                                    <li><a href="{{url('/')}}">Accueil</a></li>
                                     <li><a href="{{url('publication')}}">Publication</a></li>
                                     <li><a href="{{url('idée')}}">Idée</a></li>
                                     <li><a href="{{url('signal')}}">Signal</a></li>
-                                    <li><a href="#">Page</a>
-                                        <ul class="submenu">
-                                            <li><a href="blog.html">Blog</a></li>
-                                            <li><a href="single-blog.html">Blog Details</a></li>
-                                            <li><a href="elements.html">Elements</a></li>
-                                            <li><a href="job_details.html">job Details</a></li>
-                                        </ul>
-                                    </li>
+                                    <li><a href="#">Favoris</a></li>
                                     <li><a href="contact.html">Contact</a></li>
                                 </ul>
                             </nav>

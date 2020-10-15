@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset('../assets/node_modules/dropify/dist/css/dropify.min.css') }}">
     <link rel="stylesheet" href="{{asset('assets/font-awesome-4.7.0/css/font-awesome.min.css')}}">
 
+    <!-- select2 -->
     <link href="{{asset('../dist/css/parsley.css')}}" rel="stylesheet">
     <link href="{{asset('../dist/css/select2.min.css')}}" rel="stylesheet">
 

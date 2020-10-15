@@ -26,7 +26,7 @@ class InformationController extends Controller
           $professions = Profession::all();
           $wilayas = Wilaya::all();
           $sources = Source::all();
-        return view ('admin.pub.information',['infos' => $infos,'maladies' => $maladies,'professions' => $professions,'wilayas' => $wilayas,'sources' => $sources]);
+        return view ('admin.pub.info',['infos' => $infos,'maladies' => $maladies,'professions' => $professions,'wilayas' => $wilayas,'sources' => $sources]);
     }
 
     public function store(Request $request)
@@ -36,8 +36,6 @@ class InformationController extends Controller
          $information->contenu=$request->input('contenu');
          $information->lien=$request->input('lien');
          $information->sou_id=$request->input('sou_id');
-         $information->mal_id=$request->input('mal_id');
-         $information->wilaya_id=$request->input('wilaya_id');
          $information->pro_id=$request->input('pro_id');
          $information->date=$request->input('date');
 
@@ -51,28 +49,40 @@ class InformationController extends Controller
         }
         
         $information->save();
+        $information->wilayas()->sync($request->wilaya_id, false);
+        $information->maladies()->sync($request->mal_id, false);
         return back();
     }
+
     function show($id)
     {
         $info = Information::find($id);
         return view('admin.pub.showPub',['info' => $info]);
     }
-    public function update(Request $request)
-{
-     $info_id = $request->input('information_id');
-     $information = Information::find($info_id);
-     $information->titre=$request->input('titre');
-     $information->contenu=$request->input('contenu');
-     $information->lien=$request->input('lien');
-    
-     $information->sou_id=$request->input('sou_id');
-     $information->mal_id=$request->input('mal_id');
-     $information->wilaya_id=$request->input('wil_id');
-     $information->pro_id=$request->input('pro_id');
-     $information->date=$request->input('date');
 
-    $information->save();
-    return redirect('admin/info');
-}
+    public function update(Request $request)
+    {
+        $info_id = $request->input('information_id');
+        $information = Information::find($info_id);
+        $information->titre=$request->input('titre');
+        $information->contenu=$request->input('contenu');
+        $information->lien=$request->input('lien');
+        
+        $information->sou_id=$request->input('sou_id');
+        $information->mal_id=$request->input('mal_id');
+        $information->wilaya_id=$request->input('wil_id');
+        $information->pro_id=$request->input('pro_id');
+        $information->date=$request->input('date');
+
+        $information->save();
+        return redirect('admin/info');
+    }
+
+    public function destroy(Request $request)
+    {
+        $i = Information::findOrFail($request->info_id);
+        $i->delete();
+
+        return back();
+    }
 }

@@ -9,7 +9,7 @@
     <div class="slider-area ">
             <!-- Mobile Menu -->
             <div class="slider-active">
-                <div class="single-slider section-overly slider-height2 d-flex align-items-center" data-background="../user/img/photo/portada-COVID.jpg">
+                <div class="single-slider section-overly slider-height2 d-flex align-items-center" data-background="{{asset('../user/img/photo/portada-COVID.jpg')}}">
                 </div>
             </div>
     </div>
