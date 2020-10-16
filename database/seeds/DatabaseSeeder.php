@@ -26,8 +26,8 @@ class DatabaseSeeder extends Seeder
             SignalsTableSeeder::class,
             IformationsTableSeeder::class,
             LikesTableSeeder::class,
-            Info_wilayasTableSeeder::class,
             Info_MaladiesTableSeeder::class,
+            Info_wilayasTableSeeder::class,
         ]);
     }
 }
