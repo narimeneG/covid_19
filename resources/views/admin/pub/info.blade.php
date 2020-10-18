@@ -92,7 +92,12 @@ AdminKit Demo - iformations Template
                     <div class="form-row">
                         <div class='col-md-6'>
                             <label>titre</label>
-                            <input type="text" class="form-control " name="titre" id="titre" placeholder="titre de l'information">
+                            <input type="text" class="form-control {{$errors->has('titre') ? 'is-invalid' : ''}}" name="titre" id="titre" placeholder="titre de l'information">
+                            @if($errors->has('titre'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('titre')}}</strong>
+                                </span>
+                            @endif
                         </div>
                         <div class='col-md-6'>
                             <label for="start">Date:</label>
@@ -126,27 +131,48 @@ AdminKit Demo - iformations Template
                     </div>
                     <div class="form-row">
                         <label >Contenu</label>
-                        <textarea name="contenu" id="contenu" placeholder="Description " class="form-control col-sm-12 rounded"></textarea>
+                        <textarea name="contenu" id="contenu" placeholder="Description "  class="form-control col-sm-12 rounded {{$errors->has('contenu') ? 'is-invalid' : ''}}" ></textarea>
+                           @if($errors->has('contenu'))
+                                    <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('contenu')}}</strong>
+                                            </span>
+                                    @endif
                     </div>
                     <div class="form-group">
                         <label>Source</label>
-                        <select class="form-control" name="sou_id" id="s_id">
+                        <select class="form-control {{$errors->has('sou_id') ? 'is-invalid' : ''}}" name="sou_id" id="s_id">
                             <option value=''></option>
                             @foreach($sources as $source)
                                 <option value='{{ $source->id }}'>{{ $source->nom }}</option>
                             @endforeach
+                            @if($errors->has('sou_id'))
+									<span class="invalid-feedback" role="alert">
+										<strong>{{ $errors->first('sou_id')}}</strong>
+									</span>
+								@endif
                         </select>
                     </div>
                     <div class="form-row">
                         <label >Lien vidéo</label>
-                        <input type="text" class="form-control" id="lien" name="lien" placeholder="le lien">
+                        <input type="text" class="form-control {{$errors->has('lien') ? 'is-invalid' : ''}}"" id="lien" name="lien" placeholder="le lien">
+                        @if($errors->has('lien'))
+                                    <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('lien')}}</strong>
+                                            </span>
+                                    @endif
                     </div>
                     <div class="form-row">
                         <div class="">
                             <div class="card-body">
                                 <label for="input-file-now">Photo</label>
-                                <input type="file" id="input-file-now" class="dropify" name="image"/>
+                                <input type="file" id="input-file-now" class="dropify  {{$errors->has('image') ? 'is-invalid' : ''}}"" name="image"/>
+                                @if($errors->has('image'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('image')}}</strong>
+                                    </span>
+                                    @endif
                             </div>
+                           
                         </div>
                     </div>
                 </div>
@@ -175,7 +201,12 @@ AdminKit Demo - iformations Template
                     <div class="form-row">
                         <div class='col-md-6'>
                             <label>titre</label>
-                            <input type="text" class="form-control " name="titre" id="titre" placeholder="titre de l'information">
+                            <input type="text" class="form-control {{$errors->has('titre') ? 'is-invalid' : ''}}" name="titre" id="titre" placeholder="titre de l'information">
+                            @if($errors->has('titre'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('titre')}}</strong>
+                                </span>
+                            @endif
                         </div>
                         <div class='col-md-6'>
                             <label for="start">Date:</label>
@@ -209,26 +240,47 @@ AdminKit Demo - iformations Template
                     </div>
                     <div class="form-row">
                         <label >Contenu</label>
-                        <textarea name="contenu" id="contenu" placeholder="Description " class="form-control col-sm-12 rounded"></textarea>
+                        <textarea name="contenu" id="contenu" placeholder="Description "  class="form-control col-sm-12 rounded {{$errors->has('contenu') ? 'is-invalid' : ''}}" ></textarea>
+                           @if($errors->has('contenu'))
+                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('contenu')}}</strong>
+                                    </span>
+                            @endif
                     </div>
                     <div class="form-group">
                         <label>Source</label>
-                        <select class="form-control" name="sou_id" id="s_id">
+                        <select class="form-control {{$errors->has('sou_id') ? 'is-invalid' : ''}}" name="sou_id" id="s_id">
                             <option value=''></option>
                             @foreach($sources as $source)
                                 <option value='{{ $source->id }}'>{{ $source->nom }}</option>
                             @endforeach
+                            @if($errors->has('sou_id'))
+									<span class="invalid-feedback" role="alert">
+										<strong>{{ $errors->first('sou_id')}}</strong>
+									</span>
+								@endif
                         </select>
                     </div>
                     <div class="form-row">
                         <label >Lien vidéo</label>
-                        <input type="text" class="form-control" id="lien" name="lien" placeholder="le lien">
+                        <input type="text" class="form-control {{$errors->has('lien') ? 'is-invalid' : ''}}"" id="lien" name="lien" placeholder="le lien">
+                        @if($errors->has('lien'))
+                        <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('lien')}}</strong>
+                                </span>
+                        @endif
                     </div>
                     <div class="form-row">
                         <div class="">
                             <div class="card-body">
                                 <label for="input-file-now">Photo</label>
-                                <input type="file" id="input-file-now" class="dropify" name="image"/>
+                                @if($errors->has('image'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('image')}}</strong>
+                                    </span>
+                                    @endif<input type="file" id="input-file-now" class="dropify  {{$errors->has('image') ? 'is-invalid' : ''}}"" name="image"/>
+                            </div>
+                     
                             </div>
                         </div>
                     </div>

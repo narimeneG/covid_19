@@ -25,7 +25,11 @@ class InformationRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'titre' => 'string|min:3|max:255',
+            'contenu' =>'string|min:10',
+            'image' => 'image|mimes:jpeg,png,jpg,gif',
+            'lien'=>'string',
+            'sou_id'=>'required',
         ];
     }
 }
