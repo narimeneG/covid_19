@@ -16,10 +16,8 @@ class InformationController extends Controller
 {
     public function index(){
         if(Auth::user()){
-            
-
             $infos = DB::table('informations')
-                
+            ->join('sources', 'sources.id', '=', 'informations.sou_id')
                 ->join('info_wilayas', function($join)
                 {
                     $id_c = Auth::user()->com_id;
@@ -35,20 +33,42 @@ class InformationController extends Controller
                     ->where('info_professions.pro_id',Auth::user()->pro_id);
 
                 })*/
-                ->select( 'informations.*')
+                ->select('sources.nom as source', 'informations.*')
                 ->orderBy('date', 'desc')
                 ->paginate(5);
-            /*DB::table('informations')
-                ->join('info_professions', 'info_professions.info_id', '=', 'informations.id')
-                ->select('info_professions.pro_id as prof_id', 'informations.*')
-                ->where('prof_id',Auth::user()->pro_id)
-                ->orderBy('date', 'desc')
-                ->paginate(5);*/
         }else{
-            $infos = Information::orderBy('date', 'desc')->paginate(5);
+            $infos = DB::table('informations')
+                ->join('sources', 'sources.id', '=', 'informations.sou_id')
+                ->select('sources.nom as source', 'informations.*')
+                ->orderBy('date', 'desc')
+                ->paginate(5);
+            //Information::orderBy('date', 'desc')->paginate(5);
         }
         
         return view('user.publication',['infos' => $infos]);
+    }
+
+    public function show()
+    {
+        $infos = DB::table('informations')
+        ->join('sources', 'sources.id', '=', 'informations.sou_id')
+            ->join('favoris', function($join)
+            {
+                $id = Auth::user()->id;
+                $join->on('informations.id', '=', 'favoris.info_id')
+                ->where('favoris.cit_id',$id);
+
+            })
+            /*->join('info_professions', function($join)
+            {
+                $join->on('informations.id', '=', 'info_professions.info_id')
+                ->where('info_professions.pro_id',Auth::user()->pro_id);
+
+            })*/
+            ->select('sources.nom as source', 'informations.*')
+            ->orderBy('date', 'desc')
+            ->paginate(5);
+            return view('user.favoris',['infos' => $infos]);
     }
 
     public function favoris(Request $request)

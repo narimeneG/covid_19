@@ -82,21 +82,25 @@ class IformationsTableSeeder extends Seeder
         $info = new Information();
         $info->image = 'uploads/info/5.jpg';
         $info->date = date('Y-m-d', strtotime('2020-04-29'));
+        $info->sou_id = '1';
         $info->save();
 
         $info = new Information();
         $info->image = 'uploads/info/laver.png';
         $info->date = date('Y-m-d', strtotime('2020-03-29'));
+        $info->sou_id = '3';
         $info->save();
 
         $info = new Information();
         $info->image = 'uploads/info/v.png';
         $info->date = date('Y-m-d', strtotime('2020-05-02'));
+        $info->sou_id = '3';
         $info->save();
 
         $info = new Information();
         $info->image = 'uploads/info/j.png';
         $info->date = date('Y-m-d', strtotime('2020-07-30'));
+        $info->sou_id = '3';
         $info->save();
 
         $info = new Information();
@@ -107,11 +111,13 @@ class IformationsTableSeeder extends Seeder
         $info = new Information();
         $info->image = 'uploads/info/coronavirus-protection-mask-vector.jpg';
         $info->date = date('Y-m-d', strtotime('2020-07-22'));
+        $info->sou_id = '1';
         $info->save();
 
         $info = new Information();
         $info->image = 'uploads/info/france-corona.jpg';
         $info->date = date('Y-m-d', strtotime('2020-06-15'));
+        $info->sou_id = '1';
         $info->save();
     }
 }

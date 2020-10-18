@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class info_professionsTableSeeder extends Seeder
+class Info_professionsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +11,6 @@ class info_professionsTableSeeder extends Seeder
      */
     public function run()
     {
-        
         DB::table('info_professions')->insert([
             [
                 'pro_id' => '11',
@@ -39,6 +38,5 @@ class info_professionsTableSeeder extends Seeder
             ]
             
             ]);
-
     }
 }

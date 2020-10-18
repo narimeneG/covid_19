@@ -18,7 +18,7 @@
                                     <li><a href="{{url('publication')}}">Publication</a></li>
                                     <li><a href="{{url('idée')}}">Idée</a></li>
                                     <li><a href="{{url('signal')}}">Signal</a></li>
-                                    <li><a href="#">Favoris</a></li>
+                                    <li><a href="{{url('votre-favoris')}}">Favoris</a></li>
                                     <li><a href="contact.html">Contact</a></li>
                                 </ul>
                             </nav>

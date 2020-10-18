@@ -28,7 +28,8 @@ class DatabaseSeeder extends Seeder
             LikesTableSeeder::class,
             Info_MaladiesTableSeeder::class,
             Info_wilayasTableSeeder::class,
-            info_professionsTableSeeder::class,
+            Info_professionsTableSeeder::class,
+            FavorisTableSeeder::class,
         ]);
     }
 }

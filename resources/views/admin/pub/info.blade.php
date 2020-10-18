@@ -62,7 +62,11 @@ AdminKit Demo - iformations Template
 										{{ $m->nom }}&nbsp;
 									@endforeach
                                 </td>
-                                @if($info->pro_id != null) <td>{{$info->pro->nom}}</td> @else <td>NULL</td> @endif
+                                <td>
+                                    @foreach($info-> pro as $p)
+										{{ $p->nom }}&nbsp;
+									@endforeach
+                                </td>
                                 @if($info->sou_id != null) <td>{{$info->source->nom}}</td> @else <td></td> @endif
 								<td class="table-action">
 									<button class="btn btn-info m-0" ><a href="{{url('admin/pub/'.$info->id.'/show')}}"><i class="align-middle text-white" data-feather="eye"></i></a></button>
@@ -105,25 +109,24 @@ AdminKit Demo - iformations Template
                         </div>			
                     </div>       
                     <div class="form-group">
-                        <label>Maladies</label>
-                        <select class="form-control select2-multi"  name="mal_id[]" multiple="multiple">
+                        <label>Maladies</label><br>
+                        <select class="form-control select2-multi" style="width: 100%"  name="mal_id[]" multiple="multiple">
                             @foreach($maladies as $mal)
                                 <option value='{{ $mal->id }}'>{{ $mal->nom }}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="form-group ">
-                        <label>Wilayas</label>
-                        <select class="form-control select1-multi" name="wilaya_id[]" multiple="multiple">   
+                        <label>Wilayas</label><br>
+                        <select class="form-control select1-multi" style="width: 100%" name="wilaya_id[]" multiple="multiple">   
                             @foreach($wilayas as $wil)
                                 <option value='{{ $wil->id }}'>{{ $wil->nom }}</option>
                             @endforeach      
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Profession</label>
-                        <select class="form-control" name="pro_id" id="p_id">
-                            <option value=''></option>
+                        <label>Profession</label><br>
+                        <select class="form-control select3-multi" style="width: 100%" name="pro_id[]" id="p_id" multiple="multiple">
                             @foreach($professions as $pro)
                                 <option value='{{ $pro->id }}'>{{ $pro->nom }}</option>
                             @endforeach
@@ -133,15 +136,14 @@ AdminKit Demo - iformations Template
                         <label >Contenu</label>
                         <textarea name="contenu" id="contenu" placeholder="Description "  class="form-control col-sm-12 rounded {{$errors->has('contenu') ? 'is-invalid' : ''}}" ></textarea>
                            @if($errors->has('contenu'))
-                                    <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('contenu')}}</strong>
-                                            </span>
-                                    @endif
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('contenu')}}</strong>
+                                </span>
+                            @endif
                     </div>
                     <div class="form-group">
                         <label>Source</label>
                         <select class="form-control {{$errors->has('sou_id') ? 'is-invalid' : ''}}" name="sou_id" id="s_id">
-                            <option value=''></option>
                             @foreach($sources as $source)
                                 <option value='{{ $source->id }}'>{{ $source->nom }}</option>
                             @endforeach
@@ -154,18 +156,18 @@ AdminKit Demo - iformations Template
                     </div>
                     <div class="form-row">
                         <label >Lien vidéo</label>
-                        <input type="text" class="form-control {{$errors->has('lien') ? 'is-invalid' : ''}}"" id="lien" name="lien" placeholder="le lien">
+                        <input type="text" class="form-control {{$errors->has('lien') ? 'is-invalid' : ''}}" id="lien" name="lien" placeholder="le lien">
                         @if($errors->has('lien'))
-                                    <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('lien')}}</strong>
-                                            </span>
-                                    @endif
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('lien')}}</strong>
+                            </span>
+                        @endif
                     </div>
                     <div class="form-row">
                         <div class="">
                             <div class="card-body">
                                 <label for="input-file-now">Photo</label>
-                                <input type="file" id="input-file-now" class="dropify  {{$errors->has('image') ? 'is-invalid' : ''}}"" name="image"/>
+                                <input type="file" id="input-file-now" class="dropify  {{$errors->has('image') ? 'is-invalid' : ''}}" name="image"/>
                                 @if($errors->has('image'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('image')}}</strong>
@@ -214,25 +216,24 @@ AdminKit Demo - iformations Template
                         </div>			
                     </div>       
                     <div class="form-group">
-                        <label>Maladies</label>
-                        <select class="form-control select3-multi"  name="mal_id[]" multiple="multiple">
+                        <label>Maladies</label><br>
+                        <select class="form-control select4-multi" style="width: 100%" name="mal_id[]" multiple="multiple">
                             @foreach($maladies as $mal)
                                 <option value='{{ $mal->id }}'>{{ $mal->nom }}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="form-group ">
-                        <label>Wilayas</label>
-                        <select class="form-control select1-multi" name="wilaya_id[]" multiple="multiple">   
+                        <label>Wilayas</label><br>
+                        <select class="form-control select5-multi" style="width: 100%" name="wilaya_id[]" multiple="multiple">   
                             @foreach($wilayas as $wil)
                                 <option value='{{ $wil->id }}'>{{ $wil->nom }}</option>
                             @endforeach      
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Profession</label>
-                        <select class="form-control" name="pro_id" id="p_id">
-                            <option value=''></option>
+                        <label>Profession</label><br>
+                        <select class="form-control select6-multi" style="width: 100%" name="pro_id[]" id="p_id" multiple="multiple">
                             @foreach($professions as $pro)
                                 <option value='{{ $pro->id }}'>{{ $pro->nom }}</option>
                             @endforeach
@@ -243,8 +244,8 @@ AdminKit Demo - iformations Template
                         <textarea name="contenu" id="contenu" placeholder="Description "  class="form-control col-sm-12 rounded {{$errors->has('contenu') ? 'is-invalid' : ''}}" ></textarea>
                            @if($errors->has('contenu'))
                             <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('contenu')}}</strong>
-                                    </span>
+                                <strong>{{ $errors->first('contenu')}}</strong>
+                            </span>
                             @endif
                     </div>
                     <div class="form-group">
@@ -266,22 +267,21 @@ AdminKit Demo - iformations Template
                         <input type="text" class="form-control {{$errors->has('lien') ? 'is-invalid' : ''}}"" id="lien" name="lien" placeholder="le lien">
                         @if($errors->has('lien'))
                         <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('lien')}}</strong>
-                                </span>
+                                <strong>{{ $errors->first('lien')}}</strong>
+                            </span>
                         @endif
                     </div>
                     <div class="form-row">
                         <div class="">
                             <div class="card-body">
                                 <label for="input-file-now">Photo</label>
-                                @if($errors->has('image'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('image')}}</strong>
-                                    </span>
-                                    @endif<input type="file" id="input-file-now" class="dropify  {{$errors->has('image') ? 'is-invalid' : ''}}"" name="image"/>
+                                <input type="file" id="input-file-now" class="dropify  {{$errors->has('image') ? 'is-invalid' : ''}}" name="image"/>
                             </div>
-                     
-                            </div>
+                            @if($errors->has('image'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('image')}}</strong>
+                                </span>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -325,6 +325,12 @@ AdminKit Demo - iformations Template
 <script type="text/javascript">
     $('.select2-multi').select2();
     $('.select1-multi').select2();
+    $('.select3-multi').select2();
+
+    $('.select4-multi').select2();
+    
+    $('.select5-multi').select2();
+    $('.select6-multi').select2();
     
     $('#modal2').on('show.bs.modal', function (event) {
 		var button = $(event.relatedTarget) 

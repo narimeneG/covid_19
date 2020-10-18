@@ -80,6 +80,7 @@ Route::post('admin/info','Admin\InformationController@store')->name('admin/info'
 Route::put('admin/info','Admin\InformationController@update')->name('admin/info');
 Route::delete('admin/info','Admin\InformationController@destroy')->name('admin/info');
 Route::post('favoris','Citoyen\InformationController@favoris')->name('favoris');//user frontend
+Route::get('votre-favoris','Citoyen\InformationController@show')->middleware('auth');//user frontend
 
 //Les admins
 Route::get('admin/Admins','Admin\AdminController@index');

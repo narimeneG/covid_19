@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Information;
 use Illuminate\Http\Request;
+use App\Http\Requests\InformationRequest;
+use Illuminate\Validation\Rule;
 use App\Wilaya;
 use App\Maladie;
 use App\Profession;
@@ -36,7 +38,6 @@ class InformationController extends Controller
          $information->contenu=$request->input('contenu');
          $information->lien=$request->input('lien');
          $information->sou_id=$request->input('sou_id');
-         $information->pro_id=$request->input('pro_id');
          $information->date=$request->input('date');
 
               if($request->hasFile('image')){
@@ -51,6 +52,7 @@ class InformationController extends Controller
         $information->save();
         $information->wilayas()->sync($request->wilaya_id, false);
         $information->maladies()->sync($request->mal_id, false);
+        $information->pro()->sync($request->pro_id, false);
         return back();
     }
 
