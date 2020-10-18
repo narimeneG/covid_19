@@ -20,7 +20,7 @@ class Information extends Model
 
     public function pro()
     {
-        return $this->belongsTo('App\Profession','pro_id');
+        return $this->belongsToMany('App\Profession','info_professions', 'info_id', 'pro_id');
     }
 
     public function maladies()

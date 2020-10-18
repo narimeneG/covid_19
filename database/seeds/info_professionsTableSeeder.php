@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class info_professions extends Seeder
+class info_professionsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -35,7 +35,7 @@ class info_professions extends Seeder
             ],
             [
                 'pro_id' => '8',
-                'info_id' => '*5'
+                'info_id' => '5'
             ]
             
             ]);

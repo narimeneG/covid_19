@@ -29,7 +29,7 @@ Route::get('admin/idées','Admin\IdeeController@index');
 Route::get('idée','Citoyen\IdeeController@create'); //user frontend
 Route::post('accepte','Admin\IdeeController@accepte')->name('accepte');
 Route::post('refus','Admin\IdeeController@refus')->name('refus');
-Route::post('idée','Citoyen\IdeeController@store')->name('idée');//user frontend
+Route::post('idée','Citoyen\IdeeController@store')->name('idée')->middleware('auth');//user frontend
 Route::post('like','Citoyen\IdeeController@like')->name('like');//user frontend
 Route::post('dislike','Citoyen\IdeeController@dislike')->name('dislike');//user frontend
 Route::put('admin/idées','Admin\IdeeController@update')->name('admin/idées');
@@ -79,6 +79,7 @@ Route::get('publication','Citoyen\InformationController@index');
 Route::post('admin/info','Admin\InformationController@store')->name('admin/info');
 Route::put('admin/info','Admin\InformationController@update')->name('admin/info');
 Route::delete('admin/info','Admin\InformationController@destroy')->name('admin/info');
+Route::post('favoris','Citoyen\InformationController@favoris')->name('favoris');//user frontend
 
 //Les admins
 Route::get('admin/Admins','Admin\AdminController@index');

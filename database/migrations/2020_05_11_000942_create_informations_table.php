@@ -20,8 +20,6 @@ class CreateInformationsTable extends Migration
             $table->string('lien')->nullable();
             $table->string('image')->nullable();
             $table->date('date')->nullable();
-            $table->unsignedInteger('pro_id')->nullable();
-            $table->foreign('pro_id')->references('id')->on('professions')->onDelete('cascade');
             $table->unsignedInteger('sou_id')->nullable();
             $table->foreign('sou_id')->references('id')->on('sources')->onDelete('cascade');
             $table->timestamps();

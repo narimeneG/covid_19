@@ -44,6 +44,9 @@ publication
                                         </a>
                                     </div>
                                 @endif
+                                <?php
+                                    $favoris_status = 'btn_1';
+                                ?>
                                 @if($info->titre || $info->contenu || $info->sou_id != null)
                                     <div class="blog_details">
                                         <a class="d-inline-block" href="single-blog.html">
@@ -51,26 +54,23 @@ publication
                                         </a>
                                         <p>{{ $info->contenu }}</p>
                                         @if($info->sou_id != null) <p>{{$info->sou_id}}</p> @else <p></p> @endif
-                                        <ul class="blog-info-link">
-                                            <li><a href="#"><i class="fa fa-heart-o"></i> Favoris</a></li>
-                                            <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
-                                            <li><a href="#"><i class="fa fa-share-alt"></i> Partager</a></li>
-                                        </ul>
+                                        <div class="button-group-area mt-10">
+                                            <button tpye="button" data-infoid="{{ $info->id }}_l" data-favoris="{{ $favoris_status }}" class="button rounded-0 primary-bg text-white {{ $favoris_status }} boxed-btn favoris">
+                                                <i class="fa fa-heart-o"></i> Favoris
+                                            </button>
+                                            <a href="#"><i class="fa fa-comments"></i> 03 Comments</a>
+                                            <a href="#"><i class="fa fa-share-alt"></i> Partager</a>
+                                        </div>
                                     </div>
                                 @else
                                     <div class="blog_details">
-                                        <a class="d-inline-block" href="single-blog.html">
-                                            <h2></h2>
-                                        </a>
-                                        <p>
-                                        </p>
-                                        <ul class="blog-info-link">
-                                            <li>
-                                                <a href="#" data-infoid="{{ $info->id }}_l" class="favoris"><i class="fa fa-heart-o"></i> Favoris</a>
-                                            </li>
-                                            <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
-                                            <li><a href="#"><i class="fa fa-share-alt"></i> Partager</a></li>
-                                        </ul>
+                                        <div class="button-group-area mt-10">
+                                            <button tpye="button" data-infoid="{{ $info->id }}_l" data-favoris="{{ $favoris_status }}" class="button rounded-0 primary-bg text-white {{ $favoris_status }} boxed-btn favoris">
+                                                <i class="fa fa-heart-o"></i> Favoris
+                                            </button>
+                                            <a href="#"><i class="fa fa-comments"></i> 03 Comments</a>
+                                            <a href="#"><i class="fa fa-share-alt"></i> Partager</a>
+                                        </div>
                                     </div>  
                                 @endif
                             </article>
@@ -83,15 +83,31 @@ publication
                 </div>
 
 <!-- JS here -->
-<script src="{{asset('js/app.js')}}"></script>     
+<script src="{{asset('js/app.js')}}"></script> 
+<script src="{{ asset('../assets/js/jquery.min.js' )}}"></script>    
 <script>
+    var token = "{{ Session::token() }}";
     $('.favoris').on('click', function () {
-        alert("tggggggggggggg");
+        var favoris_s = $(this).attr('data-favoris');
         var info_id = $(this).attr('data-infoid');
         info_id = info_id.slice(0, -2);
-        alert(info_id);
-
         
+        $.ajax({
+            type: 'POST',
+            url: "{{ route('favoris') }}",
+            data: {favoris_s: favoris_s, info_id: info_id, _token: token},
+
+            success: function(data){
+                if(data.is_favoris == 1){
+                    //alert("add");
+                    $('*[data-infoid="'+ info_id +'_l"]').removeClass('btn_1').addClass('btn_f');
+                }
+                if(data.is_favoris == 0){
+                    //alert("supprimer");
+                    $('*[data-infoid="'+ info_id +'_l"]').removeClass('btn_f').addClass('btn_1');
+                }
+            }
+        });
         
     });
 </script>          

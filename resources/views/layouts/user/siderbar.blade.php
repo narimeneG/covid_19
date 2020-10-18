@@ -36,35 +36,37 @@
             <br>
             <p class="text-center"><a href="{{url('idée')}}" class="text-dark">Afficher plus</a></p>
         </aside>
+        <!-- Tag -->
         <aside class="single_sidebar_widget tag_cloud_widget">
             <h4 class="widget_title">Tag Clouds</h4>
             <ul class="list">
                 <li>
-                    <a href="#">project</a>
+                    <a href="http://covid19.cipalgerie.com/fr/statistiques-detaillees-covid-19-algerie/">Algéria</a>
                 </li>
                 <li>
-                    <a href="#">love</a>
+                    <a href="https://www.worldometers.info/coronavirus/country/us/">USA</a>
                 </li>
                 <li>
-                    <a href="#">technology</a>
+                    <a href="https://www.worldometers.info/coronavirus/country/india/">India</a>
                 </li>
                 <li>
-                    <a href="#">travel</a>
+                    <a href="https://www.worldometers.info/coronavirus/country/brazil/">Brazil</a>
                 </li>
                 <li>
-                    <a href="#">restaurant</a>
+                    <a href="https://www.worldometers.info/coronavirus/country/russia/">Russia</a>
                 </li>
                 <li>
-                    <a href="#">life style</a>
+                    <a href="https://www.worldometers.info/coronavirus/country/spain/">Spain</a>
                 </li>
                 <li>
-                    <a href="#">design</a>
+                    <a href="https://www.worldometers.info/coronavirus/country/argentina/">Argentina</a>
                 </li>
                 <li>
-                    <a href="#">illustration</a>
+                    <a href="https://www.worldometers.info/coronavirus/?utm_campaign=homeAdvegas1?">Tous les pays</a>
                 </li>
             </ul>
         </aside>
+        <!-- photos -->
         <aside class="single_sidebar_widget instagram_feeds">
             <h4 class="widget_title">Photos</h4>
             <ul class="instagram_row flex-wrap">

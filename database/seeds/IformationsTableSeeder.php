@@ -25,7 +25,6 @@ class IformationsTableSeeder extends Seeder
         $info->contenu = 'Respecter les mesures prises par les chauffeurs en portant des masques, en stérilisant et en transportant une seule personne.';
         $info->date = date('Y-m-d', strtotime('2020-06-18'));
         $info->sou_id = '1';
-        $info->pro_id = '11';
         $info->save();
 
         $info = new Information();
@@ -41,7 +40,6 @@ class IformationsTableSeeder extends Seeder
         $info->image = 'uploads/info/p4.jpg';
         $info->date = date('Y-m-d', strtotime('2020-05-20'));
         $info->sou_id = '2';
-        $info->pro_id = '8';
         $info->save();
 
         $info = new Information();
@@ -50,7 +48,6 @@ class IformationsTableSeeder extends Seeder
         $info->image = 'uploads/info/p1.jpg';
         $info->date = date('Y-m-d', strtotime('2020-08-01'));
         $info->sou_id = '2';
-        $info->pro_id = '8';
         $info->save();
 
         $info = new Information();
