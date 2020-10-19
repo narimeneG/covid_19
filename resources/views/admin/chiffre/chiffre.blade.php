@@ -26,7 +26,7 @@ AdminKit Demo - chiffres Template
 		</div>
 		<div class="row card-footer clearfix">
 			<div class="col-10"><strong>La liste des chiffres</strong></div>
-			<button type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#modal2"><i class="fas fa-plus"></i> Add item</button>
+			<button type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#modal2"><i class="fas fa-plus"></i> Ajouter </button>
 		</div>
 		<br>
 		<div class="row">

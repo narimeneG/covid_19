@@ -82,8 +82,17 @@ class InformationController extends Controller
 
     public function infoSource($id)
     {
-        //
+        $infos = Information::where('sou_id',$id)->get();
+        $sources = Source::all();
+        $nbr = Information::where('sou_id',$id)->count();
+        $s = DB::table('sources')->where('id',$id)->first()->nom; 
+        $maladies = Maladie::all();
+        $professions = Profession::all();
+        $wilayas = Wilaya::all();
+        return view('admin.pub.infoSource',['infos' => $infos,'sources' => $sources,'maladies' => $maladies,'professions' => $professions,'wilayas' => $wilayas,'nbr' => $nbr,'s' => $s]);
     }
+
+    
 
     public function destroy(Request $request)
     {

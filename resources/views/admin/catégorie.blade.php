@@ -28,7 +28,7 @@ AdminKit Demo - idées Template
 				<!--nouvelle catégorie-->
 		<div class="row card-footer clearfix">
 			<div class="col-10"><strong>Les catégories des idées</strong></div>
-			<button type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#modal1"><i class="fas fa-plus"></i> Add item</button>
+			<button type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#modal1"><i class="fas fa-plus"></i> Ajouter</button>
 		</div>
 			<br>
 		<div class="row">

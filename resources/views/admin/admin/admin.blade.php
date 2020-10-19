@@ -28,7 +28,7 @@ AdminKit Demo - Admins Template
 		<!--tableaux des admins-->
 		<div class="row card-footer clearfix">
 			<div class="col-10"></div>
-			<button type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#modal1"><i class="fas fa-plus"></i> Add item</button>
+			<button type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#modal1"><i class="fas fa-plus"></i> Ajouter</button>
 		</div>
 		<br>
 		<div class="row">
