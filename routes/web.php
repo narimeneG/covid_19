@@ -68,16 +68,17 @@ Route::put('admin/signals','Admin\SignalController@update')->name('admin/signals
 Route::delete('admin/signals','Admin\SignalController@destroy')->name('admin/signals');
 Route::post('accepter','Admin\SignalController@accepter')->name('accepter');
 Route::post('refuser','Admin\SignalController@refuser')->name('refuser');
-Route::get('signal','Citoyen\SignalController@create');
-Route::post('signal','Citoyen\SignalController@store')->name('signal');
+Route::get('signal','Citoyen\SignalController@create');//user frontend
+Route::post('signal','Citoyen\SignalController@store')->name('signal');//user frontend
 Route::get('admin/signal/{id}/show','Admin\SignalController@show');
 
 //Les pub
 Route::get('admin/info','Admin\InformationController@index');
 Route::get('admin/pub/{id}/show','Admin\InformationController@show');
-Route::get('publication','Citoyen\InformationController@index');
+Route::get('admin/pub/{id}/edit','Admin\InformationController@edit');
+Route::get('publication','Citoyen\InformationController@index');//user frontend
 Route::post('admin/info','Admin\InformationController@store')->name('admin/info');
-Route::put('admin/info','Admin\InformationController@update')->name('admin/info');
+Route::put('admin/pub/{id}','Admin\InformationController@update');
 Route::delete('admin/info','Admin\InformationController@destroy')->name('admin/info');
 Route::post('favoris','Citoyen\InformationController@favoris')->name('favoris');//user frontend
 Route::get('votre-favoris','Citoyen\InformationController@show')->middleware('auth');//user frontend

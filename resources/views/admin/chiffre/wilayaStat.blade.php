@@ -260,7 +260,7 @@
         <div class="col-12 col-lg-6 col-xxl-9 d-flex">
             <div class="card flex-fill">
                 <div class="card-header">
-                    <h5 class="card-title mb-0">Les malades {{ $wilaya }}</h5>
+                    <h5 class="card-title mb-0">Courbes des cas {{ $wilaya }}</h5>
                 </div>
                 <div class="card-body d-flex w-100">
                     <div class="align-self-center chart chart-lg">
@@ -274,14 +274,14 @@
         <div class="col-12 col-lg-6 col-xxl-3 d-flex">
             <div class="card flex-fill w-100">
                 <div class="card-header">
-                    <h5 class="card-title mb-0">Les malades {{ $wilaya }}</h5>
+                    <h5 class="card-title mb-0">Diagrammes en bâtons des cas {{ $wilaya }}</h5>
                 </div>
                 <div class="card-body d-flex w-100">
                     <div class="align-self-center chart chart-lg">
                     {!! $barmal->html() !!}
                     </div>
                     {!! Charts::scripts() !!}
-		{!! $barmal->script() !!}
+		            {!! $barmal->script() !!}
                 </div>
             </div>
         </div>
@@ -290,7 +290,7 @@
         <div class="col-12 col-lg-6 col-xxl-9 d-flex">
             <div class="card flex-fill">
                 <div class="card-header">
-                    <h5 class="card-title mb-0">Les morts {{ $wilaya }}</h5>
+                    <h5 class="card-title mb-0">Courbes des décés {{ $wilaya }}</h5>
                 </div>
                 <div class="card-body d-flex w-100">
                     <div class="align-self-center chart chart-lg">
@@ -304,7 +304,7 @@
         <div class="col-12 col-lg-6 col-xxl-3 d-flex">
             <div class="card flex-fill w-100">
                 <div class="card-header">
-                    <h5 class="card-title mb-0">Les morts {{ $wilaya }}</h5>
+                    <h5 class="card-title mb-0">Diagrammes en bâtons des décés {{ $wilaya }}</h5>
                 </div>
                 <div class="card-body d-flex w-100">
                     <div class="align-self-center chart chart-lg">
@@ -320,7 +320,7 @@
         <div class="col-12 col-lg-6 col-xxl-9 d-flex">
             <div class="card flex-fill">
                 <div class="card-header">
-                    <h5 class="card-title mb-0">Les guéris {{ $wilaya }}</h5>
+                    <h5 class="card-title mb-0">Courbes des guéris {{ $wilaya }}</h5>
                 </div>
                 <div class="card-body d-flex w-100">
                     <div class="align-self-center chart chart-lg">
@@ -334,7 +334,7 @@
         <div class="col-12 col-lg-6 col-xxl-3 d-flex">
             <div class="card flex-fill w-100">
                 <div class="card-header">
-                    <h5 class="card-title mb-0">Les gueris {{ $wilaya }}</h5>
+                    <h5 class="card-title mb-0">Diagrammes en bâtons des gueris {{ $wilaya }}</h5>
                 </div>
                 <div class="card-body d-flex w-100">
                     <div class="align-self-center chart chart-lg">

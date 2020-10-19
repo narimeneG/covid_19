@@ -44,14 +44,50 @@
                                 </tbody>
                             </table>
                         </div>
-                          <!-- job single End -->
+                          <!-- cas confirmés -->
+                          {!! Charts::scripts() !!}
                         <div class="job-post-details shadow-lg p-3 mb-5 bg-white rounded">
                             <div class="post-details1 mb-50">
                                 <!-- Small Section Tittle -->
                                 <div class="small-section-tittle">
-                                    <h4>Job Description</h4>
+                                    <h4>Cas confirmés</h4>
                                 </div>
-                                <p>It is a long established fact that a reader will beff distracted by vbthe creadable content of a page when looking at its layout. The pointf of using Lorem Ipsum is that it has ahf mcore or-lgess normal distribution of letters, as opposed to using, Content here content here making it look like readable.</p>
+                                {!! $donut_mal->html() !!}
+							    {!! $donut_mal->script() !!}
+                            </div>
+                            <div class="post-details1 mb-50">
+                                {!! $chart->html() !!}
+                                {!! $chart->script() !!}
+                            </div>
+                        </div>
+                        <!-- décés -->
+                        <div class="job-post-details shadow-lg p-3 mb-5 bg-white rounded">
+                            <div class="post-details1 mb-50">
+                                <!-- Small Section Tittle -->
+                                <div class="small-section-tittle">
+                                    <h4>Cas de décès</h4>
+                                </div>
+                                {!! $donut_mort->html() !!}
+							    {!! $donut_mort->script() !!}
+                            </div>
+                            <div class="post-details1 mb-50">
+                                {!! $chart2->html() !!}
+                                {!! $chart2->script() !!}
+                            </div>
+                        </div>
+                        <!-- Guérisons -->
+                        <div class="job-post-details shadow-lg p-3 mb-5 bg-white rounded">
+                            <div class="post-details1 mb-50">
+                                <!-- Small Section Tittle -->
+                                <div class="small-section-tittle">
+                                    <h4>cas de récupération</h4>
+                                </div>
+                                {!! $donut_gue->html() !!}
+							    {!! $donut_gue->script() !!}
+                            </div>
+                            <div class="post-details1 mb-50">
+                                {!! $chart3->html() !!}
+                                {!! $chart3->script() !!}
                             </div>
                         </div>
                     </div>
@@ -70,16 +106,16 @@
                                         <br>+{{ $nvcas }}
                                     </p>
                                 </div>
-                                    <div class="col-xl-3 d-inline border-md-right">Guérisons
-                                        <p >{{ $nbrgue }}
-                                            <br>+{{ $nvgue }}
-                                        </p>
-                                    </div>
-                                    <div class="col-xl-3 d-inline">Décès
-                                        <p class="text-center">{{ $nbrmort }}
-                                            <br>+{{ $nvmort }}
-                                        </p>
-                                    </div>
+                                <div class="col-xl-3 d-inline border-md-right">Guérisons
+                                    <p >{{ $nbrgue }}
+                                        <br>+{{ $nvgue }}
+                                    </p>
+                                </div>
+                                <div class="col-xl-3 d-inline">Décès
+                                    <p class="text-center">{{ $nbrmort }}
+                                        <br>+{{ $nvmort }}
+                                    </p>
+                                </div>
                                </div>
                             </div>
                         </div>

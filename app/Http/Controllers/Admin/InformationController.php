@@ -62,21 +62,47 @@ class InformationController extends Controller
         return view('admin.pub.showPub',['info' => $info]);
     }
 
-    public function update(Request $request)
+    public function edit($id)
     {
-        $info_id = $request->input('information_id');
-        $information = Information::find($info_id);
-        $information->titre=$request->input('titre');
-        $information->contenu=$request->input('contenu');
-        $information->lien=$request->input('lien');
-        
-        $information->sou_id=$request->input('sou_id');
-        $information->mal_id=$request->input('mal_id');
-        $information->wilaya_id=$request->input('wil_id');
-        $information->pro_id=$request->input('pro_id');
-        $information->date=$request->input('date');
+        $info = Information::find($id);
+        $wilayas = Wilaya::all();
+        $professions = Profession::all();
+        $maladies = Maladie::all();
+        $sources = Source::all();
+        $tags = Maladie::all();
+        $tags2 = array();
+        foreach ($tags as $tag) {
+            $tags2[$tag->id] = $tag->name;
+        }
+            
+        return view('admin.pub.edit',['info'=>$info, 'wilayas'=>$wilayas, 'professions'=>$professions, 'maladies'=>$maladies, 'sources'=>$sources, 'tags2'=>$tags2]);
+    }
 
-        $information->save();
+    public function update(Request $request, $id)
+    {
+        $i = Information::find($id);
+        $i->titre=$request->input('titre');
+        $i->contenu=$request->input('contenu');
+        $i->lien=$request->input('lien');
+        $i->sou_id=$request->input('sou_id');
+        $i->date=$request->input('date');
+
+        $i->save();
+        if (isset($request->mal_id)) {
+            $i->maladies()->sync($request->mal_id);
+        } else {
+            $i->maladies()->sync(array());
+        }
+        if (isset($request->wilaya_id)) {
+            $i->wilayas()->sync($request->wilaya_id);
+        } else {
+            $i->wilayas()->sync(array());
+        }
+        if (isset($request->pro_id)) {
+            $i->pro()->sync($request->pro_id);
+        } else {
+            $i->pro()->sync(array());
+        }
         return redirect('admin/info');
     }
 

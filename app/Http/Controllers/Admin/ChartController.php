@@ -43,7 +43,7 @@ class ChartController extends Controller
             ->select([DB::raw('sum(nbrgue) as totalgue'),'date'])
             ->groupBy('date')
 			->get();
-		$chart = Charts::create('bar', 'highcharts')
+		$chart = Charts::create('line', 'highcharts')
 			->title("Développement quotidien de nouveaux cas confirmés")
 			->labels($summal->pluck('date')->all())
 			->values($summal->pluck('totalmal')->all())
@@ -51,17 +51,21 @@ class ChartController extends Controller
 			->responsive(true);
 		$chart2 = Charts::create('line', 'highcharts')
 			->title("L'évolution quotidienne des cas de mortalité")
+			->colors(['#d32f2f', '#d32f2f'])
 			->labels($summort->pluck('date')->all())
 			->values($summort->pluck('totalmort')->all())
 			->dimensions(400,400)
 			->responsive(true);
 		$chart3 = Charts::create('line', 'highcharts')
 			->title("Développement quotidien des cas de guérison")
+			->colors(['#00c853', '#00c853'])
 			->labels($sumgue->pluck('date')->all())
 			->values($sumgue->pluck('totalgue')->all())
 			->dimensions(400,400)
 			->responsive(true);	
-		$pie_chart = Charts::create('pie', 'highcharts')
+		$pie_chart = Charts::create('donut', 'highcharts')
+			->title('pourcentage des cas')
+			->colors(['#1565c0', '#1b5e20 ','#d50000'])
 			->labels(['cas', 'Guérisons', 'Décès'])
 			->values([$nbrmal,$nbrgue,$nbrmort])
 			->dimensions(400,400)

@@ -75,8 +75,94 @@
                         </div>					
                     </div>
                 </div>
-    </div>
-
+            </div>
+            <!-- cas confirmé -->
+            {!! Charts::scripts() !!}
+            <div class="row">
+                <div class="col-xl-6 col-xxl-7 d-flex">
+                    <div class="w-100"><br><br>
+                        <div class="card flex-fill w-100 shadow-lg p-3 mb-5 bg-white rounded">
+                            <div class="card-body">
+                                <h5 class="card-title mb-0">cas confirmé</h5>
+                            </div>
+                            <div class="card-body py-3">
+                                {!! $linemal->html() !!}
+                                {!! $linemal->script() !!}
+                            </div>					
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-xxl-7"><br><br>
+                    <div class="card flex-fill w-100 shadow p-3 mb-5 bg-white rounded">
+                        <div class="card-body">
+                            <h5 class="card-title mb-0">Chiffres de {{ $wilaya }}</h5>
+                        </div>
+                        <div class="card-body py-3">
+                            {!! $barmal->html() !!}
+                            {!! $barmal->script() !!}
+                        </div>					
+                    </div>
+                </div>
+                
+            </div>
+            <!-- décés -->
+            {!! Charts::scripts() !!}
+            <div class="row">
+                <div class="col-xl-6 col-xxl-7 d-flex">
+                    <div class="w-100"><br><br>
+                        <div class="card flex-fill w-100 shadow-lg p-3 mb-5 bg-white rounded">
+                            <div class="card-body">
+                                <h5 class="card-title mb-0">cas confirmé</h5>
+                            </div>
+                            <div class="card-body py-3">
+                                {!! $linemort->html() !!}
+                                {!! $linemort->script() !!}
+                            </div>					
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-xxl-7"><br><br>
+                    <div class="card flex-fill w-100 shadow p-3 mb-5 bg-white rounded">
+                        <div class="card-body">
+                            <h5 class="card-title mb-0">Chiffres de {{ $wilaya }}</h5>
+                        </div>
+                        <div class="card-body py-3">
+                            {!! $barmort->html() !!}
+                            {!! $barmort->script() !!}
+                        </div>					
+                    </div>
+                </div>
+                
+            </div>
+            <!-- cas confirmé -->
+            {!! Charts::scripts() !!}
+            <div class="row">
+                <div class="col-xl-6 col-xxl-7 d-flex">
+                    <div class="w-100"><br><br>
+                        <div class="card flex-fill w-100 shadow-lg p-3 mb-5 bg-white rounded">
+                            <div class="card-body">
+                                <h5 class="card-title mb-0">Guérison</h5>
+                            </div>
+                            <div class="card-body py-3">
+                                {!! $linegue->html() !!}
+                                {!! $linegue->script() !!}
+                            </div>					
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-xxl-7"><br><br>
+                    <div class="card flex-fill w-100 shadow p-3 mb-5 bg-white rounded">
+                        <div class="card-body">
+                            <h5 class="card-title mb-0">Chiffres de {{ $wilaya }}</h5>
+                        </div>
+                        <div class="card-body py-3">
+                            {!! $bargue->html() !!}
+                            {!! $bargue->script() !!}
+                        </div>					
+                    </div>
+                </div>
+                
+            </div>
 <!-- JS here -->
 @endsection
 
