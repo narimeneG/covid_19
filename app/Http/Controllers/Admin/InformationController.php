@@ -25,9 +25,9 @@ class InformationController extends Controller
     public function index(){
         $infos = Information::all();
         $maladies = Maladie::all();
-          $professions = Profession::all();
-          $wilayas = Wilaya::all();
-          $sources = Source::all();
+        $professions = Profession::all();
+        $wilayas = Wilaya::all();
+        $sources = Source::all();
         return view ('admin.pub.info',['infos' => $infos,'maladies' => $maladies,'professions' => $professions,'wilayas' => $wilayas,'sources' => $sources]);
     }
 
@@ -78,6 +78,11 @@ class InformationController extends Controller
 
         $information->save();
         return redirect('admin/info');
+    }
+
+    public function infoSource($id)
+    {
+        //
     }
 
     public function destroy(Request $request)

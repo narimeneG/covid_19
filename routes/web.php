@@ -81,6 +81,7 @@ Route::put('admin/info','Admin\InformationController@update')->name('admin/info'
 Route::delete('admin/info','Admin\InformationController@destroy')->name('admin/info');
 Route::post('favoris','Citoyen\InformationController@favoris')->name('favoris');//user frontend
 Route::get('votre-favoris','Citoyen\InformationController@show')->middleware('auth');//user frontend
+Route::get('admin/infoSource/{id}/show','Admin\InformationController@infoSource');
 
 //Les admins
 Route::get('admin/Admins','Admin\AdminController@index');
@@ -95,7 +96,7 @@ Route::delete('admin/Admins','Admin\AdminController@destroy')->name('admin/Admin
 
 Route::get('admin/statistique','Admin\ChartController@index');
 //Route::get('admin/statistique','ChartController@chart');
-Route::get('test','ChartController@getAllMonths');
+Route::get('stock/chart','Admin\ChartController@chart1');
 
 //Citoyen profile
 Route::get('user/{id}/profile','Citoyen\UserController@profile');

@@ -27,7 +27,7 @@ class UsersTableSeeder extends Seeder
         $user->prenom = 'Meriem';
         $user->email = 'Houbad@gmail.com';
         $user->password = Hash::make('password');
-        $user->com_id = '1';
+        $user->com_id = '2';
         $user->pro_id = '3';
         $user->save();
 

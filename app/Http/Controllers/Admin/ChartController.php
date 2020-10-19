@@ -31,110 +31,99 @@ class ChartController extends Controller
 		$stats = DB::table('stats')->select('stats.*' ,'wilayas.nom','wilayas.id as w_id')
 			->join('wilayas', 'wilayas.id', '=', 'stats.wilaya_id')
 			->orderBy('date','desc')->take(11)->get();
-		//table('stats')->latest('date')->take(11)->get();
-		//Chiffre::whereDate('date', '=', date('Y-m-d'))->get();
-		/* $users = DB::table('stats')
-        	->selectRaw('SUM(nbrmal)')
-            ->groupBy('created_at')
-			->get();*/
 		$summal = DB::table('stats')
-            ->select([DB::raw('sum(nbrmal) as totalmal')])
-            ->where(DB::raw("(DATE_FORMAT(date, '%M'))"),date('M'))
+			->select([DB::raw('sum(nbrmal) as totalmal'),'date'])
+			->groupBy('date')
 			->get();
 		$summort = DB::table('stats')
             ->select([DB::raw('sum(nbrmort) as totalmort'),'date'])
             ->groupBy('date')
 			->get();
-		
-		/*DB::table('stats')
-			->select([DB::raw('sum(nbrmal) as totalmal'),date('M')])
-			->where(DB::raw("(DATE_FORMAT(date, '%M'))"),date('M'))->get();
-		$chart = Charts::database($summal, 'line', 'highcharts')
-			->title("covid-19 Algérie")
-			->colors(['#ff0000', '#ffffff'])
-			->dimensions(1000,400)
-			->responsive(false)
-			->groupByMonth(date('Y'), true);*/
-		/*$chart2 = Charts::multi('percentage', 'justgage')
-				    ->title('Percentage Chart Demo')
-				    ->elementLabel('Chart Labels')
-					->dataset('Product 1',[65,0,100])
-					->dataset('Product 2',[0,0,100])
-				    ->responsive(true)
-				    ->height(300)
-				    ->width(0);*/
+		$sumgue = DB::table('stats')
+            ->select([DB::raw('sum(nbrgue) as totalgue'),'date'])
+            ->groupBy('date')
+			->get();
+		$chart = Charts::create('bar', 'highcharts')
+			->title("Développement quotidien de nouveaux cas confirmés")
+			->labels($summal->pluck('date')->all())
+			->values($summal->pluck('totalmal')->all())
+			->dimensions(400,400)
+			->responsive(true);
 		$chart2 = Charts::create('line', 'highcharts')
-			->title("Les morts")
+			->title("L'évolution quotidienne des cas de mortalité")
 			->labels($summort->pluck('date')->all())
 			->values($summort->pluck('totalmort')->all())
 			->dimensions(400,400)
 			->responsive(true);
-			
-			/*$chart2 = Charts::multi('line', 'highcharts')
-				    ->title('Areaspline Chart Demo')
-				    ->colors(['#ff0000', '#ffffff'])
-				    ->labels(['Jan', 'Feb', 'Mar', 'Apl', 'May','Jun'])
-				    ->dataset('Product 1', [10, 15, 20, 25, 30, 35])
-					->dataset('Product 2',  [14, 19, 26, 32, 40, 50,60]);*/
-		return view('admin.dashboard',['chart2' => $chart2, 'user' => $user, 'info' => $info, 'idée' => $idée, 'signal' => $signal
-		, 'nbrmal' => $nbrmal, 'nbrgue' => $nbrgue, 'nbrmort' => $nbrmort, 'usernouv' => $usernouv, 'stats' => $stats]);
+		$chart3 = Charts::create('line', 'highcharts')
+			->title("Développement quotidien des cas de guérison")
+			->labels($sumgue->pluck('date')->all())
+			->values($sumgue->pluck('totalgue')->all())
+			->dimensions(400,400)
+			->responsive(true);	
+		$pie_chart = Charts::create('pie', 'highcharts')
+			->labels(['cas', 'Guérisons', 'Décès'])
+			->values([$nbrmal,$nbrgue,$nbrmort])
+			->dimensions(400,400)
+			->responsive(true);
+		
+		$nbrmal1 = DB::table('stats')->where('wilaya_id', '1')->sum('nbrmal');
+		$nbrmal2 = DB::table('stats')->where('wilaya_id', '2')->sum('nbrmal');
+		$nbrmal3 = DB::table('stats')->where('wilaya_id', '3')->sum('nbrmal');
+		$nbrmal4 = DB::table('stats')->where('wilaya_id', '4')->sum('nbrmal');
+		$nbrmal5 = DB::table('stats')->where('wilaya_id', '5')->sum('nbrmal');
+		$nbrmal6 = DB::table('stats')->where('wilaya_id', '6')->sum('nbrmal');
+		$nbrmal7 = DB::table('stats')->where('wilaya_id', '7')->sum('nbrmal');
+		$nbrmal8 = DB::table('stats')->where('wilaya_id', '8')->sum('nbrmal');
+		$nbrmal9 = DB::table('stats')->where('wilaya_id', '9')->sum('nbrmal');
+		$nbrmal10 = DB::table('stats')->where('wilaya_id', '10')->sum('nbrmal');
+		$nbrmal11 = DB::table('stats')->where('wilaya_id', '11')->sum('nbrmal');
+		$donut_mal = Charts::create('donut', 'highcharts')
+			->title('Cas par wilaya')
+			->colors(['#cddc39', '#dd2c00','#6d4c41', '#ec407a', '#00bfa5','#ff5722', '#d50000', '#ffd600','#ea80fc','#607d8b', '#4fc3f7'])
+			->labels(['Blida', 'Sétif', 'Oran', 'Constantine', 'Batna', 'Ouargla', 'Alger', 'Biskra', 'Béjaia', 'Tlemcen', 'El Oued'])
+			->values([$nbrmal1,$nbrmal2,$nbrmal3,$nbrmal4,$nbrmal5,$nbrmal6,$nbrmal7,$nbrmal8,$nbrmal9,$nbrmal10,$nbrmal11])
+			->dimensions(1000,500)
+			->responsive(true);
+		$nbrmort1 = DB::table('stats')->where('wilaya_id', '1')->sum('nbrmort');
+		$nbrmort2 = DB::table('stats')->where('wilaya_id', '2')->sum('nbrmort');
+		$nbrmort3 = DB::table('stats')->where('wilaya_id', '3')->sum('nbrmort');
+		$nbrmort4 = DB::table('stats')->where('wilaya_id', '4')->sum('nbrmort');
+		$nbrmort5 = DB::table('stats')->where('wilaya_id', '5')->sum('nbrmort');
+		$nbrmort6 = DB::table('stats')->where('wilaya_id', '6')->sum('nbrmort');
+		$nbrmort7 = DB::table('stats')->where('wilaya_id', '7')->sum('nbrmort');
+		$nbrmort8 = DB::table('stats')->where('wilaya_id', '8')->sum('nbrmort');
+		$nbrmort9 = DB::table('stats')->where('wilaya_id', '9')->sum('nbrmort');
+		$nbrmort10 = DB::table('stats')->where('wilaya_id', '10')->sum('nbrmort');
+		$nbrmort11 = DB::table('stats')->where('wilaya_id', '11')->sum('nbrmort');
+		$donut_mort = Charts::create('donut', 'highcharts')
+			->title('Décés par wilaya')
+			->colors(['#cddc39', '#dd2c00','#6d4c41', '#ec407a', '#00bfa5','#ff5722', '#d50000', '#ffd600','#ea80fc','#607d8b', '#4fc3f7'])
+			->labels(['Blida', 'Sétif', 'Oran', 'Constantine', 'Batna', 'Ouargla', 'Alger', 'Biskra', 'Béjaia', 'Tlemcen', 'El Oued'])
+			->values([$nbrmort1,$nbrmort2,$nbrmort3,$nbrmort4,$nbrmort5,$nbrmort6,$nbrmort7,$nbrmort8,$nbrmort9,$nbrmort10,$nbrmort11])
+			->dimensions(1000,500)
+			->responsive(true);
+		$nbrgue1 = DB::table('stats')->where('wilaya_id', '1')->sum('nbrgue');
+		$nbrgue2 = DB::table('stats')->where('wilaya_id', '2')->sum('nbrgue');
+		$nbrgue3 = DB::table('stats')->where('wilaya_id', '3')->sum('nbrgue');
+		$nbrgue4 = DB::table('stats')->where('wilaya_id', '4')->sum('nbrgue');
+		$nbrgue5 = DB::table('stats')->where('wilaya_id', '5')->sum('nbrgue');
+		$nbrgue6 = DB::table('stats')->where('wilaya_id', '6')->sum('nbrgue');
+		$nbrgue7 = DB::table('stats')->where('wilaya_id', '7')->sum('nbrgue');
+		$nbrgue8 = DB::table('stats')->where('wilaya_id', '8')->sum('nbrgue');
+		$nbrgue9 = DB::table('stats')->where('wilaya_id', '9')->sum('nbrgue');
+		$nbrgue10 = DB::table('stats')->where('wilaya_id', '10')->sum('nbrgue');
+		$nbrgue11 = DB::table('stats')->where('wilaya_id', '11')->sum('nbrgue');
+		$donut_gue = Charts::create('donut', 'highcharts')
+			->title('Guérisons par wilaya')
+			->colors(['#cddc39', '#dd2c00','#6d4c41', '#ec407a', '#00bfa5','#ff5722', '#d50000', '#ffd600','#ea80fc','#607d8b', '#4fc3f7'])
+			->labels(['Blida', 'Sétif', 'Oran', 'Constantine', 'Batna', 'Ouargla', 'Alger', 'Biskra', 'Béjaia', 'Tlemcen', 'El Oued'])
+			->values([$nbrgue1,$nbrgue2,$nbrgue3,$nbrgue4,$nbrgue5,$nbrgue6,$nbrgue7,$nbrgue8,$nbrgue9,$nbrgue10,$nbrgue11])
+			->dimensions(1000,500)
+			->responsive(true);
+		return view('admin.dashboard',['chart2' => $chart2, 'chart' => $chart,'chart3' => $chart3,'pie_chart' => $pie_chart, 
+		'donut_mal' => $donut_mal, 'donut_mort' => $donut_mort, 'donut_gue' => $donut_gue, 'user' => $user, 'info' => $info, 'idée' => $idée, 'signal' => $signal,
+		 'nbrmal' => $nbrmal, 'nbrgue' => $nbrgue,'nbrmort' => $nbrmort, 'usernouv' => $usernouv, 'stats' => $stats]);
 	}
 	
-	public function chart()
-      {
-        $result = DB::table('stats')
-		->select([DB::raw('sum(nbrmal) as totalmal'),'date'])
-		->groupBy('date')
-		->get();
-        return response()->json($result);
-      }
-	/*function getAllMonths(){
-        $month_array = array();
-		$posts_dates = Chiffre::orderBy( 'created_at', 'ASC' )->pluck( 'created_at' );
-		$posts_dates = json_decode( $posts_dates );
-
-		if ( ! empty( $posts_dates ) ) {
-			foreach ( $posts_dates as $unformatted_date ) {
-				$date = new \DateTime( $unformatted_date->date );
-				$month_no = $date->format( 'm' );
-				$month_name = $date->format( 'M' );
-				$month_array[ $month_no ] = $month_name;
-			}
-		}
-		return $month_array;
-    }
-    
-    function getMonthlyPostCount( $month ) {
-        $monthly_post_count ['nbrmal']= DB::table('stats')
-        ->whereMonth( 'created_at', $month )
-        ->sum('nbrmal');
-        //Chiffre::whereMonth( 'created_at', $month )->get()->count();
-		return $monthly_post_count;
-    }
-    
-    function getMonthlyPostData() {
-
-		$monthly_post_count_array = array();
-		$month_array = $this->getAllMonths();
-		$month_name_array = array();
-		if ( ! empty( $month_array ) ) {
-			foreach ( $month_array as $month_no => $month_name ){
-				$monthly_post_count = $this->getMonthlyPostCount( $month_no );
-				array_push( $monthly_post_count_array, $monthly_post_count );
-				array_push( $month_name_array, $month_name );
-			}
-		}
-
-		$max_no = max( $monthly_post_count_array );
-		$max = round(( $max_no + 10/2 ) / 10 ) * 10;
-		$monthly_post_data_array = array(
-			'months' => $month_name_array,
-			'post_count_data' => $monthly_post_count_array,
-			'max' => $max,
-		);
-
-		return $monthly_post_data_array;
-
-    }*/
-
 }

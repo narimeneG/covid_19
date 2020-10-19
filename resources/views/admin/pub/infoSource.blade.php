@@ -28,7 +28,9 @@ AdminKit Demo - iformations Template
 		</div>
         <!--nouvelle iformation-->
         <div class="row card-footer clearfix">
-			<div class="col-10"><strong>Les informations</strong></div>
+            <div class="col-10">
+                <h3><strong>{{ $nbr }} </strong>Informations poster par<strong> {{ $s }}</strong></h3>
+            </div>
 			<button type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#modal1" ><i class="fas fa-plus"></i> Add item</button>
 		</div>
 		<br>
@@ -67,7 +69,7 @@ AdminKit Demo - iformations Template
 										{{ $p->nom }}&nbsp;
 									@endforeach
                                 </td>
-                                @if($info->sou_id != null) <td><a href="{{ url('admin/infoSource/'.$info->sou_id.'/show') }}"  class="text-dark">{{$info->source->nom}}</a></td> @else <td></td> @endif
+                                @if($info->sou_id != null) <td>{{$info->source->nom}}</td> @else <td></td> @endif
 								<td class="table-action">
 									<button class="btn btn-info m-0" ><a href="{{url('admin/pub/'.$info->id.'/show')}}"><i class="align-middle text-white" data-feather="eye"></i></a></button>
 									<button class="btn btn-warning m-0" data-infoid="{{ $info->id }}" data-titre="{{ $info->titre }}" data-cont="{{ $info->contenu }}" data-sid="{{ $info->sou_id }}" data-pid="{{ $info->pro }}" data-lien="{{ $info->lien }}" data-date="{{ $info->date }}"  data-toggle="modal" data-target="#modal2"><i class="align-middle" data-feather="edit-2"></i></button>

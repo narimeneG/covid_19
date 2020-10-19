@@ -17,7 +17,7 @@ class IformationsTableSeeder extends Seeder
         $info->contenu = 'Les fidèles respectent les procédures en portant des masques et en les espaçant et en quittant la mosquée après avoir terminé la prière.';
         $info->image = 'uploads/info/p10.jpg';
         $info->date = date('Y-m-d', strtotime('2020-08-01'));
-        $info->sou_id = '1';
+        $info->sou_id = '4';
         $info->save();
 
         $info = new Information();

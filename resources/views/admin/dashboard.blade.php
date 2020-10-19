@@ -290,36 +290,24 @@
 					
 				</div>
 			</div>
+			{!! Charts::scripts() !!}
 			<div class="col-12 col-lg-6 col-xxl-3 d-flex">
 				<div class="card flex-fill w-100">
 					<div class="card-header">
-
 						<h5 class="card-title mb-0">Monthly Sales</h5>
 					</div>
 					<div class="card-body d-flex w-100">
 						<div class="align-self-center chart chart-lg">
-							<canvas id="chartjs-dashboard-bar"></canvas>
+							{!! $pie_chart->html() !!}
+							{!! $pie_chart->script() !!}
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-
-		<!-- vide -->
+		
+		<!-- cas confirmé -->
 		<div class="row">
-			<div class="col-xl-6 col-xxl-7">
-				<div class="card flex-fill w-100">
-					<div class="card-header">
-
-						<!--h5 class="card-title mb-0">Recent Movement</h5-->
-					</div>
-					<div class="card-body py-3">
-						<div class="chart chart-sm">
-							<div id=""></div>
-						</div>
-					</div>
-				</div>
-			</div>
 			<div class="col-xl-6 col-xxl-7">
 				<div class="card flex-fill w-100">
 					<div class="card-header">
@@ -327,25 +315,80 @@
 					</div>
 					<div class="card-body py-3">
 						<div class="chart chart-sm">
-							
+							{!! $chart->html() !!}
+							{!! $chart->script() !!}
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-6 col-xxl-7">
+				<div class="card flex-fill w-100">
+					<div class="card-header">
+						<!--h5 class="card-title mb-0">Recent Movement</h5-->
+					</div>
+					<div class="card-body py-3">
+						<div class="chart chart-sm">
+							{!! $donut_mal->html() !!}
+							{!! $donut_mal->script() !!}
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		{!! $chart2->html() !!}
-		{!! Charts::scripts() !!}
-		{!! $chart2->script() !!}
-
+		<!-- décés -->
 		<div class="row">
-			<div class="col-12 col-md-12 col-xxl-6 d-flex order-3 order-xxl-2">
+			<div class="col-xl-6 col-xxl-7">
 				<div class="card flex-fill w-100">
 					<div class="card-header">
-
-						<h5 class="card-title mb-0">Real-Time</h5>
+						<!--h5 class="card-title mb-0">Recent Movement</h5-->
 					</div>
-					<div class="card-body px-4">
-						<canvas id="chartjs-dashboard-bar"></canvas>
+					<div class="card-body py-3">
+						<div class="chart chart-sm">
+							{!! $chart2->html() !!}
+							{!! $chart2->script() !!}
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-6 col-xxl-7">
+				<div class="card flex-fill w-100">
+					<div class="card-header">
+						<!--h5 class="card-title mb-0">Recent Movement</h5-->
+					</div>
+					<div class="card-body py-3">
+						<div class="chart chart-sm">
+							{!! $donut_mort->html() !!}
+							{!! $donut_mort->script() !!}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- guérison -->
+		<div class="row">
+			<div class="col-xl-6 col-xxl-7">
+				<div class="card flex-fill w-100">
+					<div class="card-header">
+						<!--h5 class="card-title mb-0">Recent Movement</h5-->
+					</div>
+					<div class="card-body py-3">
+						<div class="chart chart-sm">
+							{!! $chart3->html() !!}
+							{!! $chart3->script() !!}
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-6 col-xxl-7">
+				<div class="card flex-fill w-100">
+					<div class="card-header">
+						<!--h5 class="card-title mb-0">Recent Movement</h5-->
+					</div>
+					<div class="card-body py-3">
+						<div class="chart chart-sm">
+							{!! $donut_gue->html() !!}
+							{!! $donut_gue->script() !!}
+						</div>
 					</div>
 				</div>
 			</div>
@@ -518,269 +561,10 @@
     });
   });
 </script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.3/js/bootstrap-select.min.js" charset="utf-8"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.js" charset="utf-8"></script>
-        <script>
-				var url = "{{url('stock/chart')}}";
-				var Years = new Array();
-				var Labels = new Array();
-				var Prices = new Array();
-				$(document).ready(function(){
-				$.get(url, function(response){
-					response.forEach(function(data){
-						Years.push(data.date);
-						Labels.push(data.date);
-						Prices.push(data.nbrmal);
-					});
-					var ctx = document.getElementById("canvass").getContext('2d');
-						var myChart = new Chart(ctx, {
-						type: 'bar',
-						data: {
-							labels:Years,
-							datasets: [{
-								label: 'Infosys Price',
-								data: Prices,
-								borderWidth: 1
-							}]
-						},
-						options: {
-							scales: {
-								yAxes: [{
-									ticks: {
-										beginAtZero:true
-									}
-								}]
-							}
-						}
-					});
-				});
-				});
-		</script>
-	<script>
-			/*( function ( $ ) {
-		var charts = {
-			init: function () {
-				// -- Set new default font family and font color to mimic Bootstrap's default styling
-				Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
-				Chart.defaults.global.defaultFontColor = '#292b2c';
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.3/js/bootstrap-select.min.js" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.js" charset="utf-8"></script>
 
-				this.ajaxGetPostMonthlyData();
-
-			},
-
-			ajaxGetPostMonthlyData: function () {
-				var urlPath =  'http://' + window.location.hostname + '/admin/statistique';
-				var request = $.ajax( {
-					method: 'GET',
-					url: urlPath
-			} );
-
-				request.done( function ( response ) {
-					console.log( response );
-					this.createCompletedJobsChart( response );
-				});
-			},
-
-			/**
-			* Created the Completed Jobs Chart
-			*/
-			/*createCompletedJobsChart: function ( response ) {
-				alert("44444444");
-				var ctx = document.getElementById("chartjs-dashboard-line");alert("createCompletedJobsChart");
-				var myLineChart = new Chart(ctx, {
-					type: 'line',
-					data: {
-						labels: response.months, // The response got from the ajax request containing all month names in the database
-						datasets: [{
-							label: "Sessions",
-							lineTension: 0.3,
-							backgroundColor: "rgba(2,117,216,0.2)",
-							borderColor: "rgba(2,117,216,1)",
-							pointRadius: 5,
-							pointBackgroundColor: "rgba(2,117,216,1)",
-							pointBorderColor: "rgba(255,255,255,0.8)",
-							pointHoverRadius: 5,
-							pointHoverBackgroundColor: "rgba(2,117,216,1)",
-							pointHitRadius: 20,
-							pointBorderWidth: 2,
-							data: response.post_count_data // The response got from the ajax request containing data for the completed jobs in the corresponding months
-						}],
-					},
-					options: {
-						scales: {
-							xAxes: [{
-								time: {
-									unit: 'date'
-								},
-								gridLines: {
-									display: false
-								},
-								ticks: {
-									maxTicksLimit: 7
-								}
-							}],
-							yAxes: [{
-								ticks: {
-									min: 0,
-									max: response.max, // The response got from the ajax request containing max limit for y axis
-									maxTicksLimit: 5
-								},
-								gridLines: {
-									color: "rgba(0, 0, 0, .125)",
-								}
-							}],
-						},
-						legend: {
-							display: false
-						}
-					}
-				});
-			}
-		};
-		alert("debut");
-		charts.init();
-
-		} )( jQuery );*/
-		/*(function() {
-			var urlPath =  'http://' + window.location.hostname + '/admin/statistique';
-			var request = $.ajax( {
-			method: 'GET',
-			url: urlPath
-			} );
-			var ctx = document.getElementById('chartjs-dashboard-line').getContext("2d");
-			var gradient = ctx.createLinearGradient(0, 0, 0, 225);
-			gradient.addColorStop(0, 'rgba(215, 227, 244, 1)');
-			gradient.addColorStop(1, 'rgba(215, 227, 244, 0)');
-			// Line chart
-			new Chart(document.getElementById("chartjs-dashboard-line"), {
-				type: 'line',
-				data: {
-					labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-					datasets: [{
-						label: "Sales ($)",
-						fill: true,
-						backgroundColor: gradient,
-						borderColor: window.theme.primary,
-						data: [
-							2115,
-							1562,
-							1584,
-							1892,
-							1587,
-							1923,
-							2566,
-							2448,
-							2805,
-							3438,
-							2917,
-							3327
-						]
-					}]
-				},
-				options: {
-					maintainAspectRatio: false,
-					legend: {
-						display: false
-					},
-					tooltips: {
-						intersect: false
-					},
-					hover: {
-						intersect: true
-					},
-					plugins: {
-						filler: {
-							propagate: false
-						}
-					},
-					scales: {
-						xAxes: [{
-							reverse: true,
-							gridLines: {
-								color: "rgba(0,0,0,0.0)"
-							}
-						}],
-						yAxes: [{
-							ticks: {
-								stepSize: 1000
-							},
-							display: true,
-							borderDash: [3, 3],
-							gridLines: {
-								color: "rgba(0,0,0,0.0)"
-							}
-						}]
-					}
-				}
-			});
-		});*/
-		/*var url = "{{url('admin/statistique')}}";
-				var Years = new Array();
-				var Labels = new Array();
-				var Prices = new Array();
-				$(document).ready(function(){
-				$.get(url, function(response){
-					response.forEach(function(data){
-						Years.push(data.date);
-						Labels.push(data.date);
-						Prices.push(data.nbrmal);
-					});
-					var ctx = document.getElementById('chartjs-dashboard-line').getContext("2d");
-			var gradient = ctx.createLinearGradient(0, 0, 0, 225);
-			gradient.addColorStop(0, 'rgba(215, 227, 244, 1)');
-			gradient.addColorStop(1, 'rgba(215, 227, 244, 0)');
-			// Line chart
-			new Chart(document.getElementById("chartjs-dashboard-line"), {
-				type: 'line',
-				data: {
-					labels: Years,
-					datasets: [{
-						label: "Sales ($)",
-						fill: true,
-						backgroundColor: gradient,
-						borderColor: window.theme.primary,
-						data: pice
-					}]
-				},
-				options: {
-					maintainAspectRatio: false,
-					legend: {
-						display: false
-					},
-					tooltips: {
-						intersect: false
-					},
-					hover: {
-						intersect: true
-					},
-					plugins: {
-						filler: {
-							propagate: false
-						}
-					},
-					scales: {
-						xAxes: [{
-							reverse: true,
-							gridLines: {
-								color: "rgba(0,0,0,0.0)"
-							}
-						}],
-						yAxes: [{
-							ticks: {
-								stepSize: 1000
-							},
-							display: true,
-							borderDash: [3, 3],
-							gridLines: {
-								color: "rgba(0,0,0,0.0)"
-							}
-						}]
-					}
-				}
-			});
-				});
-				});*/
-	</script>
+<script src="{{asset('js/app.js')}}"></script>
 
 @endsection
